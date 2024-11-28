@@ -1,3 +1,3 @@
 var myFirstVar;
 var mySecondVar = "Hello";
-mySecondVar = 5;
+mySecondVar = 4;
