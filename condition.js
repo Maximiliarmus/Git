@@ -224,3 +224,13 @@ else if((compChoise === "камень" && userChoise === "бумага") || (com
 else{
     alert("Вы проиграли!")
 }
+
+// Идея: Программа загадывает загадку, и пользователь должен её отгадать.
+let answer = prompt("Зимой и летом одним цветом. Что это?").toLowerCase();
+let rightChoises = ["ёлка", "ель", "сосна", "пихта", "кедр"]
+if(answer === rightChoises[0] || answer === rightChoises[1] || answer === rightChoises[2] || answer === rightChoises[3] || answer === rightChoises[4]){
+    alert("Вы угадали!")
+}
+else{
+    alert("Вы не угадали!")
+}
