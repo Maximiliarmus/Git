@@ -92,7 +92,88 @@ console.log(isPalindrome("madam"));
 
 console.log(myD())
 
-function myD(){
+function myD() {
     return "Привет мир!"
 }
 
+// Функция приветствия
+
+function greet(name) {
+    return `Привет, ${name}!`;
+}
+console.log(greet("Игорь"));
+
+// Сумма двух чисел
+
+let sumTwo = (a, b) => a + b;
+console.log(sumTwo(15, 10));
+
+// Квадрат числа
+
+let square = a => a * a;
+console.log(square(15));
+
+// Определение чётности
+
+let isEven = function (num) {
+    return num % 2 === 0 ? "Четное" : "Нечетное";
+
+}
+console.log(isEven(6))
+
+// Минимальное из двух чисел
+
+function minOfTwo(a, b) {
+    return a < b ? a : b;
+}
+console.log(minOfTwo(4, 5))
+
+// Факториал числа
+
+function fact(n) {
+    if (n === 0) return 1;
+    return n * fact(n - 1)
+}
+console.log(fact(5));
+// В данном случае происходит рекурсия, функция вызывает саму себя, по этому это работает как цикл
+
+// Функция, возвращающая массив чисел от 1 до n
+
+function range(n) {
+    let arr = []; // 1. Создаем пустой массив arr
+    for (let i = 1; i <= n; i++) {  // 2. Запускаем цикл от 1 до n
+        arr.push(i);  // 3. Добавляем i в массив
+    }
+    return arr; // 4. Возвращаем готовый массив
+}
+console.log(range(6));
+
+// Функция, возвращающая сумму всех элементов массива
+
+function sumArray(arr) {
+    return arr.reduce((sum, num) => sum + num, 0);
+    // Метод .reduce() выполняет указанную функцию для каждого элемента массива, сохраняя промежуточный результат.
+    // sum - переменная которая хранит накопленный результат
+    // num - текущий элемент массива
+    // 0 - начальное значение
+}
+console.log(sumArray([1, 2, 3, 4, 5, 6, 7]));
+
+// Функция для работы с объектами
+
+function getObjectKeys(obj) {
+    return Object.keys(obj);
+}
+console.log(getObjectKeys({ name: "Анна", age: "25" }));
+
+function getObjectValues(obj) {
+    return Object.values(obj);
+}
+console.log(getObjectValues({ name: "Анна", age: "25" }));
+
+// Фильтрация массива по длине строк
+
+function filterByLength(arr, length){
+    return arr.filter(word => word.length > length)
+}
+console.log(filterByLength(["яблоко","груша","киви","апельсин"], 6))
