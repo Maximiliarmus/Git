@@ -8,7 +8,20 @@
 </head>
 <body>
     <h1>Простой калькулятор </h1>
-    <input type = "number" id = "num1" placeholder="Первое число"
-    
+    <input type = "number" id = "num1" placeholder="Первое число">
+    <select id = "operator">
+        <option value = "+">+</option>
+        <option value = "-">-</option>
+        <option value = "*">*</option>
+        <option value = "/">/</option>
+        <option value = "^">^ (степень)</option>
+        <option value = "sqrt">кв корень</option>
+        <option value = "%">%</option>
+    </select>
+    <input type = "number" id = "num2" placeholder="Второе число">
+    <button onclick="performCalculation()">=</button>
+    <p id="result"></p>
+    <script src="calc.js"></script>
+
 </body>
 </html>
