@@ -25,10 +25,22 @@ function calculate(num1, operator, num2){
     }
 }
 
-console.log(calculate(1, "+", 2));
-console.log(calculate(1, "-", 2));
-console.log(calculate(1, "*", 2));
-console.log(calculate(3, "/", 2));
-console.log(calculate(1, "^", 0));
-console.log(calculate(1, "sqrt", 0));
-console.log(calculate(10, "%", 20));
+// console.log(calculate(1, "+", 2));
+// console.log(calculate(1, "-", 2));
+// console.log(calculate(1, "*", 2));
+// console.log(calculate(3, "/", 2));
+// console.log(calculate(1, "^", 0));
+// console.log(calculate(1, "sqrt", 0));
+// console.log(calculate(10, "%", 20));
+
+let repeat;
+do{
+    let num1 = parseFloat(prompt("Введите первое число: "));
+    let operator = prompt("Введите оператор(+, -, *, /, ^, sqrt, %): ");
+    let num2 = operator === "sqrt" ? 0 : parseFloat(prompt("Введите второе число: "))
+    
+    alert("Результат: " + calculate(num1, operator, num2));
+
+    repeat = confirm("Хотите выполнить еще один расчет?");
+}while(repeat);
+
