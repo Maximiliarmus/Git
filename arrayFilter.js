@@ -69,18 +69,20 @@ const products = [
 const expensiveProducts = products.filter((product) => product.price >= 100);
     console.log(expensiveProducts)
 
-    const products1 = [
-        { name: "Шоколад", price: 80 },
-        { name: "Молоко", price: 120 },
-        { name: "Хлеб", price: 40 },
-        { name: "Сыр", price: 200 },
-      ];
-      const expensiveProducts1 = []
+    // const products1 = [
+    //     { name: "Шоколад", price: 80 },
+    //     { name: "Молоко", price: 120 },
+    //     { name: "Хлеб", price: 40 },
+    //     { name: "Сыр", price: 200 },
+    //   ];
+    //   const expensiveProducts1 = []
 
-      for(let i = 0; i < products1.length; i++){
-        if(products1[i].price >= 100){
-            expensiveProducts1.push(products1[i])
-        }
+    //   for(let i = 0; i < products1.length; i++){
+    //     if(products1[i].price >= 100){
+    //         expensiveProducts1.push(products1[i])
+    //     }
 
-      }
-      console.log(expensiveProducts1)
+    //   }
+    //   console.log(expensiveProducts1)
+
+
