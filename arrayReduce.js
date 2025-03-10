@@ -22,3 +22,4 @@ function averageArray(nums){
     return sum / nums.length;
 }
 console.log(averageArray([2,4,6,8,10]))
+
