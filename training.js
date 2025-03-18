@@ -89,3 +89,65 @@ console.log(userAdult)
 const names5 = ["Андрей", "Виктор", "Екатерина"];
 names5.sort((a,b) => b.localeCompare(a))
 .forEach((name) => console.log(name))
+
+// Дан массив пользователей. Найдите всех пользователей старше 18 лет, которые интересуются "спортом".
+
+const users5 = [
+  { name: "Олег", age: 22, hobbies: ["спорт", "музыка"] },
+  { name: "Анна", age: 17, hobbies: ["чтение", "рисование"] },
+  { name: "Игорь", age: 30, hobbies: ["спорт", "шахматы"] },
+  { name: "Света", age: 25, hobbies: ["танцы", "спорт"] },
+  { name: "Максим", age: 16, hobbies: ["кино", "игры"] }
+];
+
+const userSport = users5.filter((user) => user.age > 18 && user.hobbies.some((hobby) => hobby === "спорт"))
+console.log(userSport)
+
+// Дан массив товаров с ценами и количеством. Найдите общую стоимость всех товаров и создайте новый массив, где указывается цена за штуку.
+
+const products2 = [
+  { name: "Яблоки", price: 100, quantity: 2 },
+  { name: "Бананы", price: 150, quantity: 1 },
+  { name: "Груши", price: 200, quantity: 3 }
+];
+
+const sumProducts = products2.reduce((sum, product) => sum + (product.price * product.quantity), 0)
+console.log(sumProducts)
+const priceByOne = products2.map((product) => product.price / product.quantity)
+console.log(priceByOne)
+
+// Дан массив оценок студентов.
+
+// Проверьте, все ли студенты сдали экзамен (оценка 3 и выше).
+// Есть ли хотя бы один студент с отличной оценкой (5)?
+
+const grades = [4, 5, 3, 2, 5, 4];
+
+const allPassed = grades.every((grade) => grade >= 3)
+console.log(allPassed)
+const hasExcellent = grades.some((grade) => grade === 5)
+console.log(hasExcellent)
+
+// Дан массив чисел с повторяющимися значениями. Оставьте только уникальные числа.
+
+const numbers5 = [1, 2, 3, 4, 2, 5, 1, 6, 3, 7];
+const uniqueNumbers = numbers5.filter((num, index, arr) => arr.indexOf(num) === index)
+console.log(uniqueNumbers) 
+
+// Дан массив товаров с категориями. Группируйте товары по категориям.
+
+const items = [
+  { name: "Футболка", category: "Одежда" },
+  { name: "Джинсы", category: "Одежда" },
+  { name: "Телефон", category: "Электроника" },
+  { name: "Ноутбук", category: "Электроника" },
+  { name: "Шапка", category: "Одежда" }
+];
+
+const groupItems = items.reduce((acc, item) => {
+acc[item.category] = acc[item.category] || [];
+acc[item.category].push(item.name); 
+return acc
+}, {})
+
+console.log(groupItems)
