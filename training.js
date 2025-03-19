@@ -219,7 +219,7 @@ function greetUser(name) {
   else {
     greeting = 'Доброй ночи!'
   }
-return `${greeting} ${name}`
+  return `${greeting} ${name}`
 
 }
 
@@ -228,23 +228,23 @@ console.log(greetUser("Иван"))
 // Вывести числа от 1 до 100 в столбец. К каждой цифре подписать состояние возраста 
 // (1-17 ребенок, 18-30 - молодой, 30-55 - зрелый, от 55 - старый). Например. 33 - зрелый
 
-function getCategory(age){
-  if(age >= 1 && age <= 17){
+function getCategory(age) {
+  if (age >= 1 && age <= 17) {
     return 'ребенок'
   }
-  else if(age >= 18 && age <= 30){
+  else if (age >= 18 && age <= 30) {
     return 'молодой'
   }
-  else if(age >= 31 && age <= 55){
+  else if (age >= 31 && age <= 55) {
     return 'зрелый'
   }
-  else{
+  else {
     return 'старый'
   }
 }
 
-function printAge(){
-  for (let i = 1; i <= 100; i++){
+function printAge() {
+  for (let i = 1; i <= 100; i++) {
     console.log(`${i} - ${getCategory(i)}`)
 
   }
@@ -255,8 +255,50 @@ printAge()
 // Создай новую функцию, в которую передаешь имя и возраст человека и получаешь сообщение (Иван имеет возраст 44 и он зрелый). 
 // А также вызови внутри своей функции, функцию из прошлого задания
 
-function infUser(name, age){
+function infUser(name, age) {
   return `${name} имеет возраст ${age} и он ${getCategory(age)}`
 }
 
 console.log(infUser('Max', 3))
+
+// Сделай функцию, которая принимает массив любых целых чисел, которая возращает истинну, если все элементы четные, 
+// если бы хотя бы один элемент не четный, то false.
+
+function isEven(array) {
+  return array.every((num) => num % 2 === 0)
+}
+const nums3 = [2, 4, 6, 8]
+console.log(isEven(nums3))
+
+// Сделай функцию, которая принимает массив любых целых чисел, которая возращает истинну, 
+// если хотя бы один элемент нечетный, если все четные, то false.
+
+function isNotEven(array) {
+  return array.some((num) => num % 2 !== 0)
+}
+const nums4 = [1, 2, 4, 6, 8]
+console.log(isNotEven(nums4))
+
+// Сделай функцию, которая принимает массив любых целых чисел, которая возращает новый массив, 
+// где все элементы кратны пяти. ([1,2,5,12,15,21] вернет [5,15])
+
+function isFive(array){
+  return array.filter((num) => num % 5 === 0)
+}
+
+const nums5 = [1,2,5,12,15,21];
+console.log(isFive(nums5))
+
+// Написать функцию, которая принимает массив чисел, например [1,2,3,4,5] и функция возращает среднее арифметическое, 
+// (округлить результат до десятых)
+
+function average(array){
+  return (array.reduce((acc, num) => (acc + num), 0)/array.length).toFixed(1)
+}
+const nums6 = [1.5,2.8,3.4,4.8,5,6,7,8,17,142]
+console.log(average(nums6))
+
+// Написать функцию, которая принимает массив чисел, например [1,2,3,4,5], и переносит первый элемент массива в конец 
+// (например можно засунуть первый элемент в конец, затем удалить первый элемент), попробуй несколькими способами сделать, если догадаешься
+
+
