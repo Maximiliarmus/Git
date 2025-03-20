@@ -282,23 +282,85 @@ console.log(isNotEven(nums4))
 // Сделай функцию, которая принимает массив любых целых чисел, которая возращает новый массив, 
 // где все элементы кратны пяти. ([1,2,5,12,15,21] вернет [5,15])
 
-function isFive(array){
+function isFive(array) {
   return array.filter((num) => num % 5 === 0)
 }
 
-const nums5 = [1,2,5,12,15,21];
+const nums5 = [1, 2, 5, 12, 15, 21];
 console.log(isFive(nums5))
 
 // Написать функцию, которая принимает массив чисел, например [1,2,3,4,5] и функция возращает среднее арифметическое, 
 // (округлить результат до десятых)
 
-function average(array){
-  return (array.reduce((acc, num) => (acc + num), 0)/array.length).toFixed(1)
+function average(array) {
+  return (array.reduce((acc, num) => (acc + num), 0) / array.length).toFixed(1)
 }
-const nums6 = [1.5,2.8,3.4,4.8,5,6,7,8,17,142]
+const nums6 = [1.5, 2.8, 3.4, 4.8, 5, 6, 7, 8, 17, 142]
 console.log(average(nums6))
 
 // Написать функцию, которая принимает массив чисел, например [1,2,3,4,5], и переносит первый элемент массива в конец 
 // (например можно засунуть первый элемент в конец, затем удалить первый элемент), попробуй несколькими способами сделать, если догадаешься
 
+function moveFirstToLast(array){
+  if(array.length === 0) return array;
+  array.push(array.shift());
+  return array;
+}
+let nums7 =  [1,2,3,4,5]
+console.log(moveFirstToLast(nums7))
+
+// Написать функцию, которая принимает массив сотрудников, каждый сотрудник имеет имя и возраст ([{name: 'Иван', age: 23},...]) и возвращает массим, 
+// где каждый элемент представляет из себя строку "Имя: Иван, возвраст: 23"
+
+function formatEmployees(employees){
+  return employees.map((employee) => `Имя: ${employee.name}, возраст: ${employee.age}`)
+}
+
+const employees = [
+  { name: 'Иван', age: 23 },
+  { name: 'Мария', age: 30 },
+  { name: 'Алексей', age: 27 }
+]
+
+console.log(formatEmployees(employees))
+
+// У нас есть объект, в котором хранятся зарплаты нашей команды:
+
+// let salaries = {
+//   John: 100,
+//   Ann: 160,
+//   Pete: 130
+// }
+// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390.
+// Если объект salaries пуст, то результат должен быть 0.
+
+let salaries = {
+    John: 100,
+    Ann: 160,
+    Pete: 130
+  }
+
+  let sum = Object.values(salaries).reduce((acc, salary) => acc+salary, 0)
+
+  console.log(sum)
+
+  // Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
+
+  
+
+  function multiplyNumeric(obj){
+    for(let key in obj){
+      if (typeof obj[key] === 'number'){
+        obj[key] *= 2;
+      }
+    }
+    return obj
+  }
+  let menu = {
+    width: 200,
+    height: 300,
+    title: "My menu"
+  };
+  // multiplyNumeric(menu)
+  console.log(multiplyNumeric(menu))
 
