@@ -88,3 +88,26 @@ function neutralise(s1, s2) {
 // Для ввода [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]
 // следует вернуть [10, -65].
 
+function countPositivesSumNegatives(input) {
+    
+    let positive = input.filter((num) => num > 0).length;
+    let sumNegative = input.filter((num) => num < 0).reduce((sum, num) => sum + num, 0)
+    return [positive, sumNegative]; 
+    // Как сделать проверку когда пустой массив или равны 0  
+    };
+  console.log(countPositivesSumNegatives([]))
+
+//   Создайте функцию, которая всегда возвращает True/ trueдля 
+//   каждого элемента в данном списке.
+//   Однако, если элемент — это слово 'flick' , 
+//   переключитесь на то, чтобы всегда возвращать противоположное логическое значение.
+
+// ['codewars', 'flick', 'code', 'wars'] ➞ [True, False, False, False]
+
+// ['flick', 'chocolate', 'adventure', 'sunshine'] ➞ [False, False, False, False]
+
+// ['bicycle', 'jarmony', 'flick', 'sheep', 'flick'] ➞ [True, True, False, False, True]
+
+function flickSwitch(arr){
+    return [];
+  }
