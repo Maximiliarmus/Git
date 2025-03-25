@@ -26,7 +26,7 @@ console.log(travelDistance(600, 60))
 // где k — любое число, выступающее в качестве коэффициента.
 
 function collinearity(x1, y1, x2, y2) {
-    if(x1 * y2 - x2 * y1 === 0) return true
+    if (x1 * y2 - x2 * y1 === 0) return true
     else return false
 }
 
@@ -48,9 +48,9 @@ function collinearity(x1, y1, x2, y2) {
 // Какие способы достижения этого вы знаете?
 
 function numberToString(num) {
-    if(typeof num === 'number') return num.toString()
-  }
-console.log(numberToString(4))  
+    if (typeof num === 'number') return num.toString()
+}
+console.log(numberToString(4))
 
 // ("+-+", "+--") ➞ "+-0"
 // # Compare the first characters of each string, then the next in turn.
@@ -61,20 +61,20 @@ console.log(numberToString(4))
 
 function neutralise(s1, s2) {
     let arr = [];
-    for(let i = 0; i < s1.length; i++){
-        if(s1[i] === "+" && s2[i] === "+"){
+    for (let i = 0; i < s1.length; i++) {
+        if (s1[i] === "+" && s2[i] === "+") {
             arr.push("+")
         }
-        else if(s1[i] === "-" && s2[i] === "-" ) {
+        else if (s1[i] === "-" && s2[i] === "-") {
             arr.push("-")
         }
-            
-        else {arr.push("0")}
+
+        else { arr.push("0") }
     }
     let result2 = arr.join("");
     return result2;
-  }
-  console.log(neutralise(("--++--"), ("--+++-")))
+}
+console.log(neutralise(("--++--"), ("--+++-")))
 
 // Дан массив целых чисел.
 
@@ -89,15 +89,18 @@ function neutralise(s1, s2) {
 // следует вернуть [10, -65].
 
 function countPositivesSumNegatives(input) {
-    
+    if (input === 0 || input.length === 0) {
+        return []
+    }
     let positive = input.filter((num) => num > 0).length;
     let sumNegative = input.filter((num) => num < 0).reduce((sum, num) => sum + num, 0)
-    return [positive, sumNegative]; 
-    // Как сделать проверку когда пустой массив или равны 0  
-    };
-  console.log(countPositivesSumNegatives([]))
+    return [positive, sumNegative];
 
-//   Создайте функцию, которая всегда возвращает True/ trueдля 
+    // Как сделать проверку когда пустой массив или равны 0  
+};
+console.log(countPositivesSumNegatives([]))
+
+//   Создайте функцию, которая всегда возвращает True/ true для 
 //   каждого элемента в данном списке.
 //   Однако, если элемент — это слово 'flick' , 
 //   переключитесь на то, чтобы всегда возвращать противоположное логическое значение.
@@ -108,6 +111,116 @@ function countPositivesSumNegatives(input) {
 
 // ['bicycle', 'jarmony', 'flick', 'sheep', 'flick'] ➞ [True, True, False, False, True]
 
-function flickSwitch(arr){
-    return [];
-  }
+function flickSwitch(arr) {
+    let flag = true;
+    const res = [];
+    for (let i = 0; i < arr.length; i++) {
+        const curName = arr[i]
+        if (curName === "flick") {
+            flag = flag === true ? false : true
+
+        }
+        res.push(flag)
+
+    }
+    return res;
+}
+console.log(flickSwitch(['bicycle', 'jarmony', 'flick', 'sheep', 'flick']))
+
+// Учитывая массив целых чисел, ваше решение должно найти наименьшее целое число.
+
+// Например:
+
+// Учитывая, что [34, 15, 88, 2]ваше решение вернется2
+// Учитывая, что [34, -345, -1, 100]ваше решение вернется-345
+// Для целей этого ката можно предположить, что предоставленный массив не будет пустым.
+
+function findSmallestInt(arr) {
+    let minRes = arr[0]
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < minRes) {
+            minRes = arr[i]
+        }
+    }
+    return minRes
+
+}
+console.log(findSmallestInt([34, -345, -1, 100]))
+
+
+//   Ваша задача — создать две функции ( max and min, или maximum and minimum, и т. д., в зависимости от языка ), 
+//   которые получают список целых чисел в качестве входных данных и возвращают наибольшее и наименьшее число в этом списке соответственно. Каждая функция возвращает одно число.
+
+function findMin(arr) {
+    return Math.min(...arr)
+};
+function findMax(arr) {
+    return Math.max(...arr)
+}
+
+console.log(findMin([-52, 56, 30, 29, -54, 0, -110]))
+console.log(findMax([-52, 56, 30, 29, -54, 0, -110]))
+
+
+// Напишите функцию, которая принимает в качестве параметров неотрицательное целое число n и строку s и возвращает строку, 
+// s повторяющуюся ровно n раз.
+
+function repeatStr(n, s) {
+    const str = s.repeat(n)
+    return str
+}
+
+console.log(repeatStr(3, '*'))
+
+//   Напишите функцию ИМТ, которая вычисляет индекс массы тела (ИМТ = вес / рост 2 ).
+
+//   если ИМТ <= 18,5 вернуть "Недостаточный вес"
+
+//   если ИМТ <= 25,0 вернуть "Нормально"
+
+//   если ИМТ <= 30,0 вернуть "Избыточный вес"
+
+//   если ИМТ > 30, вернуть «Ожирение»
+
+function calculateWeight(weight, height) {
+    let bmi = weight / Math.pow(height, 2)
+    if (bmi <= 18.5) { return "Недостаточный вес" }
+    else if (bmi <= 25) { return "Нормально" }
+    else if (bmi <= 30) { return "Избыточный вес" }
+    else { return "Ожирение" }
+    return bmi
+}
+
+console.log(calculateWeight(80, 1.8))
+
+// Напишите функцию для разбиения строки и преобразования ее в массив слов.
+
+function parseStr(str) {
+    const parseStr = str.split(" ")
+    return parseStr
+}
+console.log(parseStr("I love arrays they are my favorite"))
+
+// Завершите метод, который принимает логическое значение и возвращает 
+// "Yes"строку для true или "No"строку для false.
+
+function boolToWord(bool) {
+    if (bool === true) return "Yes"
+    return "No"
+}
+console.log(boolToWord(false))
+
+//   Тимми и Сара думают, что они влюблены, но в том месте, где они живут, 
+//   они узнают об этом только тогда, когда каждый из них сорвет по цветку. 
+//   Если у одного из цветков четное количество лепестков, а у другого — нечетное, 
+//   это значит, что они влюблены.
+
+// Напишите функцию, которая будет принимать количество лепестков каждого цветка и 
+// возвращать значение true, если они влюблены, и false, если нет.
+
+function loveFunc(flower1, flower2) {
+    if(flower1 % 2 === 0 && flower2 % 2 !== 0) return true
+    else if(flower1 % 2 !== 0 && flower2 % 2 === 0) return true
+    else return false
+}
+console.log(loveFunc(0,1))
