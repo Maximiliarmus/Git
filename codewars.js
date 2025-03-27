@@ -278,3 +278,71 @@ for(let i = 0; i < arrNums.length; i++){
 return arrRes2 
 }
 console.log(fakeBin("45385593107843568"))
+
+// В коробке есть несколько столбцов игрушечных кубиков, выстроенных в ряд. В i-ом столбце находятся a_iкубики. 
+// Сначала гравитация в коробке тянет кубики вниз. Когда Боб переключает гравитацию, она начинает тянуть все кубики к определенной стороне коробки, d, 
+// которая может быть либо 'L'или 'R'(левой, либо правой). 
+// Ниже приведен пример того, как может выглядеть коробка кубиков до и после переключения гравитации.
+
+const flip=(d, a)=>{
+    if(d === "R"){
+        a.sort((b, c) => b - c)
+    }
+    else{a.sort((b, c) => c - b)}
+    return a
+  }
+  console.log(flip("L", [1, 4, 5, 3, 5]))
+
+//   Дополните функцию квадратной суммы так, чтобы она возводила в квадрат каждое переданное ей число, 
+//   а затем суммировала результаты.
+
+function squareSum(numbers){
+const res = numbers.map((num) => Math.pow(num, 2)).reduce((sum, num) => sum + num, 0)
+return res
+}
+console.log(squareSum([]))
+
+// Нам нужна функция, которая может преобразовать строку в число. 
+
+const stringToNumber = function(str){
+    let res = +str;
+    return res;
+  }
+  console.log(stringToNumber("605"))
+
+//   Рассмотрим массив/список овец, где некоторые овцы могут отсутствовать на своих местах. Нам нужна функция, 
+//   которая подсчитывает количество овец, присутствующих в массиве (true означает присутствие).
+
+function countSheeps(sheep) {
+    const resCountSheep = []
+    for(let i = 0; i < sheep.length; i++){
+        if(sheep[i] === true){
+            resCountSheep.push("+")
+        }
+    }
+    return resCountSheep.length
+  }
+  console.log(countSheeps([undefined,null,false,true]))
+
+//   Даны два целых числа a и b, которые могут быть положительными или отрицательными, 
+//   найдите сумму всех целых чисел между ними и включая их и верните ее. Если два числа равны, 
+//   верните a или b.
+
+// Примечание: a и b не заказываются!
+
+function getSum(a, b){
+    const nums = [a, b]
+   if(a === b) {return a};
+if(a > b) {
+    [a,b] = [b,a]
+}
+const res = []
+for(let i = a; i <= b; i++){
+ res.push(i)
+}
+   const resSum = res.reduce((sum, num) => sum + num, 0)
+   return resSum
+}
+console.log(getSum(0,-1))
+
+
