@@ -401,6 +401,51 @@ console.log(evenOrOdd(-30))
 function openOrSenior(data){
     const clubMembers = []
   for(let i = 0; i < data.length; i++){
-
-  }
+if(data[i]?.[0] >= 55 && data[i]?.[1] >= 7){
+    clubMembers.push("Senior")
 }
+else {clubMembers.push("Open")}
+  }
+  return clubMembers
+}
+console.log(openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]))
+
+// В этом небольшом задании вам дана строка чисел, разделенных пробелами, 
+// и вам нужно вернуть наибольшее и наименьшее число.
+
+// Все номера действительны Int32, нет необходимости их проверять.
+// Во входной строке всегда будет хотя бы одно число.
+// Выходная строка должна состоять из двух чисел, разделенных одним пробелом, 
+// причем наибольшее число должно быть первым.
+
+function highAndLow(numbers){
+    const res = numbers.split(" ").map(Number)
+    let max = Math.max(...res)
+    let min = Math.min(...res)
+    return `${max} ${min}`
+  }
+  console.log(highAndLow("1 9 3 4 -5"))
+
+//   Дано случайное неотрицательное число, необходимо вернуть цифры этого числа 
+//   в массиве в обратном порядке
+
+function digitize(n) {
+    const res = [...n.toString()].reverse().map(Number)
+    return res
+  }
+  console.log(digitize(352312))
+
+//   Завершите findNextSquareметод, который находит следующий целочисленный полный квадрат после переданного в качестве параметра. 
+//   Напомним, что целочисленный полный квадрат — это целое число n, такое, что sqrt(n) также является целым числом.
+
+// Если аргумент сам по себе не является точным квадратом, то верните либо -1 
+// пустое значение, например None, или null, в зависимости от вашего языка. Вы можете предположить, что аргумент неотрицательный.
+
+function findNextSquare(sq) {
+    let n = Math.sqrt(sq)
+    if(!Number.isInteger(n)){return -1}
+    return Math.pow((n +1 ), 2) 
+    
+  }
+  console.log(findNextSquare(625))
+  findNextSquare(121)
