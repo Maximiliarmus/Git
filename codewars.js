@@ -612,3 +612,44 @@ function squareDigits(num){
     return Number(res.join(""))
   }
   console.log(squareDigits(3212))
+
+//   Даны два положительных целых числа n и p, мы хотим найти положительное целое число k, если оно существует, такое, 
+//   что сумма цифр n возведенных в последовательные степени, начиная с , p равна k * n.
+
+function digPow(n, p){
+    let res = String(n).split("").map(Number);
+    for(let i = 0; i < res.length; i++){
+        res[i] = Math.pow(res[i], p)
+        p++;
+    }
+    const res2 = res.reduce((acc, n) => acc + n, 0)
+    console.log(res2)
+    let k = res2 / n
+    if(res2 === n * k && Number.isInteger(k)){return k}
+   return -1
+  }
+  console.log(digPow(5584207, 9))
+
+// По городу ходит автобус, который забирает и высаживает людей на каждой остановке.
+
+// Вам предоставляется список (или массив) пар целых чисел. Элементы каждой пары представляют 
+// количество людей, которые заходят в автобус (первый элемент), и количество людей, 
+// которые выходят из автобуса (второй элемент) на автобусной остановке.
+
+// Ваша задача — вернуть количество людей, которые все еще находятся 
+// в автобусе после последней остановки (после последнего массива). 
+// Несмотря на то, что это последняя остановка, автобус может быть не пустым, 
+// и некоторые люди могут все еще находиться внутри автобуса, они, вероятно, 
+// спят там :D
+
+function countPeopleInBus(busStops){
+    const res = []
+    busStops[0] = busStops[0]?.[0]  - busStops[0]?.[1]
+    console.log(busStops[0])
+    for (let i = 1; i < busStops.length; i++) {
+        busStops[i] = busStops[0] + busStops[i]?.[0] - busStops[i]?.[1]
+        res.push(busStops[i])
+  }
+return res
+}
+console.log(countPeopleInBus([[10,0],[3,5],[5,8]]))
