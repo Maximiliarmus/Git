@@ -252,30 +252,30 @@ console.log(past(0, 0, 0))
 
 // Получаете массив чисел, возвращаете сумму всех положительных единиц.
 function positiveSum(nums) {
-  const resNums = nums.filter((num) => num > 0)
-  .reduce((sum, num) => sum + num, 0)
-  return resNums
+    const resNums = nums.filter((num) => num > 0)
+        .reduce((sum, num) => sum + num, 0)
+    return resNums
 }
 console.log(positiveSum([-1, -4, -7, -12]))
 
 // Дана строка цифр, вам следует заменить любую цифру ниже 5 на '0', 
 // а любую цифру 5 и выше на '1'. Верните полученную строку.
 
-function fakeBin(x){
-const arrNums = x.split("").map(Number);
-const arrRes = []   
-for(let i = 0; i < arrNums.length; i++){
-    
-    if(arrNums[i] < 5){
-        arrRes.push(0)
+function fakeBin(x) {
+    const arrNums = x.split("").map(Number);
+    const arrRes = []
+    for (let i = 0; i < arrNums.length; i++) {
+
+        if (arrNums[i] < 5) {
+            arrRes.push(0)
+        }
+        else {
+            arrRes.push(1)
+        }
+
     }
-    else {
-        arrRes.push(1)
-    }
-    
-}
- const arrRes2 = arrRes.map(String).join('');
-return arrRes2 
+    const arrRes2 = arrRes.map(String).join('');
+    return arrRes2
 }
 console.log(fakeBin("45385593107843568"))
 
@@ -284,45 +284,45 @@ console.log(fakeBin("45385593107843568"))
 // которая может быть либо 'L'или 'R'(левой, либо правой). 
 // Ниже приведен пример того, как может выглядеть коробка кубиков до и после переключения гравитации.
 
-const flip=(d, a)=>{
-    if(d === "R"){
+const flip = (d, a) => {
+    if (d === "R") {
         a.sort((b, c) => b - c)
     }
-    else{a.sort((b, c) => c - b)}
+    else { a.sort((b, c) => c - b) }
     return a
-  }
-  console.log(flip("L", [1, 4, 5, 3, 5]))
+}
+console.log(flip("L", [1, 4, 5, 3, 5]))
 
 //   Дополните функцию квадратной суммы так, чтобы она возводила в квадрат каждое переданное ей число, 
 //   а затем суммировала результаты.
 
-function squareSum(numbers){
-const res = numbers.map((num) => Math.pow(num, 2)).reduce((sum, num) => sum + num, 0)
-return res
+function squareSum(numbers) {
+    const res = numbers.map((num) => Math.pow(num, 2)).reduce((sum, num) => sum + num, 0)
+    return res
 }
 console.log(squareSum([]))
 
 // Нам нужна функция, которая может преобразовать строку в число. 
 
-const stringToNumber = function(str){
+const stringToNumber = function (str) {
     let res = +str;
     return res;
-  }
-  console.log(stringToNumber("605"))
+}
+console.log(stringToNumber("605"))
 
 //   Рассмотрим массив/список овец, где некоторые овцы могут отсутствовать на своих местах. Нам нужна функция, 
 //   которая подсчитывает количество овец, присутствующих в массиве (true означает присутствие).
 
 function countSheeps(sheep) {
     const resCountSheep = []
-    for(let i = 0; i < sheep.length; i++){
-        if(sheep[i] === true){
+    for (let i = 0; i < sheep.length; i++) {
+        if (sheep[i] === true) {
             resCountSheep.push("+")
         }
     }
     return resCountSheep.length
-  }
-  console.log(countSheeps([undefined,null,false,true]))
+}
+console.log(countSheeps([undefined, null, false, true]))
 
 //   Даны два целых числа a и b, которые могут быть положительными или отрицательными, 
 //   найдите сумму всех целых чисел между ними и включая их и верните ее. Если два числа равны, 
@@ -330,20 +330,20 @@ function countSheeps(sheep) {
 
 // Примечание: a и b не заказываются!
 
-function getSum(a, b){
+function getSum(a, b) {
     const nums = [a, b]
-   if(a === b) {return a};
-if(a > b) {
-    [a,b] = [b,a]
+    if (a === b) { return a };
+    if (a > b) {
+        [a, b] = [b, a]
+    }
+    const res = []
+    for (let i = a; i <= b; i++) {
+        res.push(i)
+    }
+    const resSum = res.reduce((sum, num) => sum + num, 0)
+    return resSum
 }
-const res = []
-for(let i = a; i <= b; i++){
- res.push(i)
-}
-   const resSum = res.reduce((sum, num) => sum + num, 0)
-   return resSum
-}
-console.log(getSum(0,-1))
+console.log(getSum(0, -1))
 
 // Вы забыли посчитать количество тостов, которые вы туда положили, вы не знаете, положили ли вы в тостер ровно шесть тостов.
 
@@ -351,10 +351,10 @@ console.log(getSum(0,-1))
 // число все равно будет положительным, а не отрицательным.
 
 function sixToast(num) {
-    if(num > 6) return num - 6;
+    if (num > 6) return num - 6;
     return 6 - num
-  }
-  console.log(sixToast(3))
+}
+console.log(sixToast(3))
 
 //   Дан массив из единиц и нулей. Преобразуйте эквивалентное двоичное значение в целое число.
 
@@ -362,8 +362,8 @@ function sixToast(num) {
 
 const binaryArrayToNumber = arr => {
     return parseInt(arr.join(""), 2)
-  };
-  console.log(binaryArrayToNumber([1, 1, 1, 1]))
+};
+console.log(binaryArrayToNumber([1, 1, 1, 1]))
 
 //   Создайте функцию, которая отвечает на вопрос «Вы играете на банджо?».
 // Если ваше имя начинается с буквы «R» или строчной «r», вы играете на банджо!
@@ -372,15 +372,15 @@ function areYouPlayingBanjo(name) {
     const allowedLetter = ['R', 'r']
     if (allowedLetter.includes(name.charAt(0))) return `${name} plays banjo`;
     return `${name} does not plays banjo`
-  }
-  console.log(areYouPlayingBanjo("ringo"))
+}
+console.log(areYouPlayingBanjo("ringo"))
 
 //   Создайте функцию, которая принимает целое число в качестве аргумента и 
 //   возвращает значение "Even"для четных или "Odd"нечетных чисел.
 
 function evenOrOdd(number) {
-  if(number % 2 === 0) return "Even"
-  return "Odd"
+    if (number % 2 === 0) return "Even"
+    return "Odd"
 }
 console.log(evenOrOdd(-30))
 
@@ -398,17 +398,17 @@ console.log(evenOrOdd(-30))
 // Вывод будет состоять из списка строковых значений (на Haskell и C: Openили Senior), 
 // указывающих, следует ли отнести соответствующий член к старшей или открытой категории.
 
-function openOrSenior(data){
+function openOrSenior(data) {
     const clubMembers = []
-  for(let i = 0; i < data.length; i++){
-if(data[i]?.[0] >= 55 && data[i]?.[1] >= 7){
-    clubMembers.push("Senior")
+    for (let i = 0; i < data.length; i++) {
+        if (data[i]?.[0] >= 55 && data[i]?.[1] >= 7) {
+            clubMembers.push("Senior")
+        }
+        else { clubMembers.push("Open") }
+    }
+    return clubMembers
 }
-else {clubMembers.push("Open")}
-  }
-  return clubMembers
-}
-console.log(openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]))
+console.log(openOrSenior([[45, 12], [55, 21], [19, -2], [104, 20]]))
 
 // В этом небольшом задании вам дана строка чисел, разделенных пробелами, 
 // и вам нужно вернуть наибольшее и наименьшее число.
@@ -418,13 +418,13 @@ console.log(openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]))
 // Выходная строка должна состоять из двух чисел, разделенных одним пробелом, 
 // причем наибольшее число должно быть первым.
 
-function highAndLow(numbers){
+function highAndLow(numbers) {
     const res = numbers.split(" ").map(Number)
     let max = Math.max(...res)
     let min = Math.min(...res)
     return `${max} ${min}`
-  }
-  console.log(highAndLow("1 9 3 4 -5"))
+}
+console.log(highAndLow("1 9 3 4 -5"))
 
 //   Дано случайное неотрицательное число, необходимо вернуть цифры этого числа 
 //   в массиве в обратном порядке
@@ -432,8 +432,8 @@ function highAndLow(numbers){
 function digitize(n) {
     const res = [...n.toString()].reverse().map(Number)
     return res
-  }
-  console.log(digitize(352312))
+}
+console.log(digitize(352312))
 
 //   Завершите findNextSquareметод, который находит следующий целочисленный полный квадрат после переданного в качестве параметра. 
 //   Напомним, что целочисленный полный квадрат — это целое число n, такое, что sqrt(n) также является целым числом.
@@ -443,9 +443,172 @@ function digitize(n) {
 
 function findNextSquare(sq) {
     let n = Math.sqrt(sq)
-    if(!Number.isInteger(n)){return -1}
-    return Math.pow((n +1 ), 2) 
+    if (!Number.isInteger(n)) { return -1 }
+    return Math.pow((n + 1), 2)
+
+}
+console.log(findNextSquare(625))
+findNextSquare(121)
+
+// Тролли атакуют ваш раздел комментариев!
+
+// Распространенный способ решения этой проблемы — удалить все гласные буквы из комментариев троллей, нейтрализовав угрозу.
+
+// Ваша задача — написать функцию, которая принимает строку и возвращает новую строку, в которой удалены все гласные.
+
+// Например, строка «Этот сайт для неудачников LOL!» превратится в «Ths wbst s fr lsrs LL!».
+
+// Примечание: в данном случае ката yне считается гласной.
+
+function disemvowel(str) {
+    return str.replace(/[aeiouAEIOU]/g, '');
+}
+console.log(disemvowel("This website is for losers LOL!"))
+
+//   Дано целое число, определите, является ли оно квадратом числа :
+
+//   В математике квадратное число или полный квадрат — это целое число, 
+//   которое является квадратом целого числа; другими словами, это произведение некоторого целого числа на самого себя.
+
+//   Тесты всегда будут использовать некоторое целое число, так что не беспокойтесь об этом 
+//   в языках с динамической типизацией.
+
+var isSquare = function (n) {
+    return Math.sqrt(n) % 1 === 0 ? true : false; // fix me
+}
+console.log(isSquare(26))
+
+function addBinary(a, b) {
+    let y = a + b
+    return y.toString(2)
+}
+console.log(addBinary(5, 9))
+
+// Цвета, используемые принтером, записываются в контрольную строку. Например, 
+// «хорошая» контрольная строка будет aaabbbbhaijjjmозначать, что принтер использовал три раза цвет a, четыре раза цвет b, один раз цвет h, затем один раз цвет a...
+
+// Иногда возникают проблемы: отсутствие цветов, техническая неисправность и 
+// выдается «плохая» контрольная строка, например, aaaxbbbbyyhwawiwjjjwwmс буквами не из a to m.
+
+// Вам нужно написать функцию printer_error, которая, учитывая строку, 
+// вернет частоту ошибок принтера в виде строки , представляющей рациональное число, 
+// числитель которого — количество ошибок, а знаменатель — длина контрольной строки. 
+// Не сводите эту дробь к более простому выражению.
+
+// Строка имеет длину больше или равную единице и содержит только буквы от a до z.
+
+function printerError(s) {
+    const a = [...s].filter((char) => char > 'm' && char <= 'z').length
+    const b = [...s].length
+    return `${a}/${b}`
+}
+console.log(printerError("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"))
+
+// Ваша задача — создать функцию, которая выполняет четыре основные математические операции.
+
+// Функция должна принимать три аргумента - операция(строка/символ), значение1(число), значение2(число).
+// Функция должна возвращать результат чисел после применения выбранной операции.
+
+function basicOp(operation, value1, value2) {
+    switch (operation) {
+        case "+": return value1 + value2;
+        case "-": return value1 - value2;
+        case "*": return value1 * value2;
+        case "/": return value1 / value2;
+        default: return 'Operation must be one of + - * /'
+    }
+
+}
+console.log(basicOp('/', 2, 3))
+
+//   Ваша задача — написать функцию, которая возвращает n-й член следующего ряда, 
+//   который является суммой первых n членов последовательности ( n— входной параметр).
+// Вам необходимо округлить ответ до двух знаков после запятой и вернуть его в виде строки.
+// Если заданное значение 0 равно , то должно быть возвращено "0.00".
+// В качестве аргументов вам будут предоставлены только натуральные числа.
+
+function SeriesSum(n) {
+    let sum = 0;
+
+    for (let i = 0; i < n; i++) {
+        let dem = i * 3 + 1
+        sum += 1/ dem;
+    }
+
+    return sum.toFixed(2)
+}
+console.log(SeriesSum(0))
+
+// В небольшом городе население p0 = 1000в начале года. Население регулярно увеличивается на 2 percentв год, и, кроме того, 50в город ежегодно приезжают новые жители. 
+// Сколько лет нужно городу, чтобы его население стало больше или равно количеству p = 1200жителей?
+
+function nbYear(p0, percent, aug, p) {
+    percent = percent / 100;
+    let years = 0;
+    
+    while(p0 < p){
+        p0 = Math.floor(p0 + p0 * percent + aug);
+        years++; 
+    }
+return years   
+}
+console.log(nbYear(1000, 2.0, 50, 1214))
+
+// Учитывая непустой массив целых чисел, вернуть результат умножения значений по порядку
+
+function grow(x){
+    return x.reduce((acc, num) => acc * num, )
+}
+console.log(grow([2, 2, 2, 2, 2, 2]))
+
+// Дан массив целых чисел, вернуть новый массив, в котором каждое значение удвоено.
+
+function maps(x){
+return x.map(x => x * 2)
+}
+console.log(maps([1, 2, 3]))
+
+// Герой направляется в замок, чтобы выполнить свою миссию. 
+// Однако ему сказали, что замок окружен парой могущественных драконов! 
+// Для победы над каждым драконом требуется 2 пули, наш герой понятия не имеет, 
+// сколько пуль ему следует нести.. Если предположить, что он схватит определенное заданное количество пуль 
+// и двинется вперед, чтобы сразиться с другим определенным заданным количеством драконов, выживет ли он?
+
+// Верните true, если да, в противном случае false :)
+
+function hero(bullets, dragons){
+    
+    return bullets >= 2 * dragons;
+    }
+console.log(hero(9, 5))
+
+// Вы, вероятно, знаете систему "лайков" из Facebook и других страниц. 
+// Люди могут "лайкать" записи в блогах, фотографии или другие элементы. Мы хотим создать текст, 
+// который должен отображаться рядом с таким элементом.
+
+// Реализуйте функцию, которая принимает массив, содержащий имена людей, которым нравится элемент
+
+function likes(names) {
+    if(names.length >= 4){return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`}
+    else if(names.length < 1){return `no one likes this`}
+    else if(names.length === 2){return `${names[0]} and ${names[1]} likes this`}
+    else if(names.length === 1){return `${names[0]} likes this`}
+    else {return `${names[0]}, ${names[1]} and ${names[2]} likes this`};
+     
     
   }
-  console.log(findNextSquare(625))
-  findNextSquare(121)
+  console.log(likes(["Alex"]))
+
+//   Добро пожаловать. В этом ката вам предлагается возвести в квадрат каждую цифру числа и сложить их.
+
+// Например, если мы пропустим 9119 через функцию, то получим 811181, потому что 9 2 — это 81, а 1 2 — это 1. (81-1-1-81)
+
+// Пример №2: Ввод 765 вернет/должен вернуть 493625, потому что 7 2 равно 49, 6 2 равно 36, а 5 2 равно 25. (49-36-25)
+
+// Примечание: функция принимает целое число и возвращает целое число.
+
+function squareDigits(num){
+    const res = String(num).split("").map(num => Math.pow(num, 2));
+    return Number(res.join(""))
+  }
+  console.log(squareDigits(3212))
