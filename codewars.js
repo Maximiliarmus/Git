@@ -532,7 +532,7 @@ function SeriesSum(n) {
 
     for (let i = 0; i < n; i++) {
         let dem = i * 3 + 1
-        sum += 1/ dem;
+        sum += 1 / dem;
     }
 
     return sum.toFixed(2)
@@ -545,26 +545,26 @@ console.log(SeriesSum(0))
 function nbYear(p0, percent, aug, p) {
     percent = percent / 100;
     let years = 0;
-    
-    while(p0 < p){
+
+    while (p0 < p) {
         p0 = Math.floor(p0 + p0 * percent + aug);
-        years++; 
+        years++;
     }
-return years   
+    return years
 }
 console.log(nbYear(1000, 2.0, 50, 1214))
 
 // Учитывая непустой массив целых чисел, вернуть результат умножения значений по порядку
 
-function grow(x){
-    return x.reduce((acc, num) => acc * num, )
+function grow(x) {
+    return x.reduce((acc, num) => acc * num,)
 }
 console.log(grow([2, 2, 2, 2, 2, 2]))
 
 // Дан массив целых чисел, вернуть новый массив, в котором каждое значение удвоено.
 
-function maps(x){
-return x.map(x => x * 2)
+function maps(x) {
+    return x.map(x => x * 2)
 }
 console.log(maps([1, 2, 3]))
 
@@ -576,10 +576,10 @@ console.log(maps([1, 2, 3]))
 
 // Верните true, если да, в противном случае false :)
 
-function hero(bullets, dragons){
-    
+function hero(bullets, dragons) {
+
     return bullets >= 2 * dragons;
-    }
+}
 console.log(hero(9, 5))
 
 // Вы, вероятно, знаете систему "лайков" из Facebook и других страниц. 
@@ -589,15 +589,15 @@ console.log(hero(9, 5))
 // Реализуйте функцию, которая принимает массив, содержащий имена людей, которым нравится элемент
 
 function likes(names) {
-    if(names.length >= 4){return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`}
-    else if(names.length < 1){return `no one likes this`}
-    else if(names.length === 2){return `${names[0]} and ${names[1]} likes this`}
-    else if(names.length === 1){return `${names[0]} likes this`}
-    else {return `${names[0]}, ${names[1]} and ${names[2]} likes this`};
-     
-    
-  }
-  console.log(likes(["Alex"]))
+    if (names.length >= 4) { return `${names[0]}, ${names[1]} and ${names.length - 2} others like this` }
+    else if (names.length < 1) { return `no one likes this` }
+    else if (names.length === 2) { return `${names[0]} and ${names[1]} likes this` }
+    else if (names.length === 1) { return `${names[0]} likes this` }
+    else { return `${names[0]}, ${names[1]} and ${names[2]} likes this` };
+
+
+}
+console.log(likes(["Alex"]))
 
 //   Добро пожаловать. В этом ката вам предлагается возвести в квадрат каждую цифру числа и сложить их.
 
@@ -607,28 +607,28 @@ function likes(names) {
 
 // Примечание: функция принимает целое число и возвращает целое число.
 
-function squareDigits(num){
+function squareDigits(num) {
     const res = String(num).split("").map(num => Math.pow(num, 2));
     return Number(res.join(""))
-  }
-  console.log(squareDigits(3212))
+}
+console.log(squareDigits(3212))
 
 //   Даны два положительных целых числа n и p, мы хотим найти положительное целое число k, если оно существует, такое, 
 //   что сумма цифр n возведенных в последовательные степени, начиная с , p равна k * n.
 
-function digPow(n, p){
+function digPow(n, p) {
     let res = String(n).split("").map(Number);
-    for(let i = 0; i < res.length; i++){
+    for (let i = 0; i < res.length; i++) {
         res[i] = Math.pow(res[i], p)
         p++;
     }
     const res2 = res.reduce((acc, n) => acc + n, 0)
     console.log(res2)
     let k = res2 / n
-    if(res2 === n * k && Number.isInteger(k)){return k}
-   return -1
-  }
-  console.log(digPow(5584207, 9))
+    if (res2 === n * k && Number.isInteger(k)) { return k }
+    return -1
+}
+console.log(digPow(5584207, 9))
 
 // По городу ходит автобус, который забирает и высаживает людей на каждой остановке.
 
@@ -642,14 +642,115 @@ function digPow(n, p){
 // и некоторые люди могут все еще находиться внутри автобуса, они, вероятно, 
 // спят там :D
 
-function countPeopleInBus(busStops){
+function countPeopleInBus(busStops) {
     const res = []
-    busStops[0] = busStops[0]?.[0]  - busStops[0]?.[1]
-    console.log(busStops[0])
+    if (busStops.length === 1 && Array.isArray(busStops[0]) && busStops[0]?.[0] === 0 && busStops[0]?.[1] === 0) { return 0 }
+    else if (busStops.length === 1 && Array.isArray(busStops[0]) && busStops[0]?.[0] > busStops[0]?.[1]) { return busStops[0]?.[0] }
+    busStops[0] = busStops[0]?.[0] - busStops[0]?.[1]
     for (let i = 1; i < busStops.length; i++) {
-        busStops[i] = busStops[0] + busStops[i]?.[0] - busStops[i]?.[1]
+        busStops[i] = busStops[i - 1] + busStops[i]?.[0] - busStops[i]?.[1]
         res.push(busStops[i])
-  }
-return res
+    }
+    return res.pop()
 }
-console.log(countPeopleInBus([[10,0],[3,5],[5,8]]))
+console.log(countPeopleInBus([[81, 0]]))
+
+// Есть массив с некоторыми числами. Все числа равны, кроме одного. Попробуйте найти его!
+function findUniq(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i + 1] && arr[i + 1] === arr[i + 2]) { return arr[i] }
+        else if (arr[i] !== arr[i + 1]) { return arr[i + 1] }
+
+    }
+
+}
+console.log(findUniq([0, 1, 0, 0, 0]))
+
+//   Реализуйте функцию unique_in_order, которая принимает в качестве аргумента последовательность и возвращает список элементов без элементов 
+//   с одинаковым значением рядом друг с другом, сохраняя исходный порядок элементов.
+
+let uniqueInOrder = function (iterable) {
+    if (typeof iterable === "string") {
+        iterable.split("")
+    }
+    const res = []
+    for (let i = 0; i < iterable.length; i++) {
+        if (iterable[i] !== iterable[i + 1]) { res.push(iterable[i]) }
+    }
+    return res
+}
+console.log(uniqueInOrder('ABBCcAD'))
+
+//   Создайте функцию, которая возвращает сумму двух наименьших положительных чисел, 
+//   заданных массивом из минимум 4 положительных целых чисел. 
+//   Не будут переданы числа с плавающей точкой или неположительные целые числа.
+
+function sumTwoSmallestNumbers(numbers) {
+    let min1 = Math.min(...numbers)
+    let index1 = numbers.indexOf(min1)
+    numbers.splice(index1, 1)
+    let min2 = Math.min(...numbers)
+    return min1 + min2
+}
+
+console.log(sumTwoSmallestNumbers([456, 456, 510, 944]))
+
+// Возьмите 2 строки s1 и , s2 включающие только буквы от a до z. 
+// Верните новую отсортированную строку (в алфавитном порядке возрастания), 
+// максимально длинную, содержащую различные буквы - каждая взята только один раз - из s1 или s2.
+
+// Панграмма — это предложение, которое содержит каждую букву алфавита хотя бы один раз. 
+// Например, предложение «The quick brown fox jumps over the lazy dog» является панграммой, 
+// потому что в нем хотя бы один раз используются буквы AZ (регистр не имеет значения).
+
+// Дана строка, определить, является ли она панграммой. Верните True, если это так, False, если нет. 
+// Игнорируйте цифры и знаки препинания.
+
+function isPangram(string){
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    const lowerString = string.toLowerCase()
+
+    return [...alphabet].every(letter => lowerString.includes(letter))
+  }
+  console.log(isPangram("The quick brown fox jumps over the lazy do."))
+
+// Создайте функцию с двумя аргументами, которая будет возвращать массив первых nкратных x.
+
+// Предположим, что и заданное число, и количество подсчетов будут положительными числами, большими, чем 0.
+
+// Возвращает результаты в виде массива или списка (в зависимости от языка).
+
+function countBy(x, n) {
+    
+    const z = new Array(n).fill(0).map((_,i) => (i + 1) * x)
+    
+    return z;
+  }
+  console.log(countBy(1,10))
+
+//   Создайте программу, которая фильтрует список строк и возвращает список, 
+//   содержащий только имена ваших друзей.
+
+// Если в имени ровно 4 буквы, то это точно ваш друг! 
+// В противном случае, будьте уверены, это не...
+
+function friend(friends){
+    const res = []
+    for(let i = 0; i < friends.length; i++){
+        if(friends[i].length === 4){
+            res.push(friends[i])
+        }
+    }
+    return res
+  }
+  console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
+
+//   Дан треугольник из последовательных нечетных чисел:
+//   Вычислите сумму чисел в n- й строке этого треугольника (начиная с индекса 1), например: ( Вход --> Выход )
+
+function rowSumOddNumbers(n) {
+	const res = new Array(n).fill(0).map((_, i) => 2 * i  + 1)
+    return res
+}
+console.log(rowSumOddNumbers(5))
+
