@@ -749,8 +749,30 @@ function friend(friends){
 //   Вычислите сумму чисел в n- й строке этого треугольника (начиная с индекса 1), например: ( Вход --> Выход )
 
 function rowSumOddNumbers(n) {
-	const res = new Array(n).fill(0).map((_, i) => 2 * i  + 1)
+	let firstNumber = n * (n - 1) + 1;
+    if(n === 1){return n}
+    const arr = [];
+    arr.length = n;
+    for(let i = 1; i < n; i++){
+        arr[0] = firstNumber;
+        arr[i] = firstNumber + (i * 2);
+    }
+    const res = arr.reduce((acc, num) => acc + num, 0)
     return res
 }
-console.log(rowSumOddNumbers(5))
+console.log(rowSumOddNumbers(42))
 
+
+// Сможете ли вы найти иголку в стоге сена?
+
+// Напишите функцию findNeedle(), которая принимает array полный мусор, но содержит один"needle"
+
+// После того, как ваша функция найдет иглу, она должна вернуть сообщение (в виде строки), которое гласит:
+
+// "found the needle at position "плюс indexон нашел иголку, так что:
+
+function findNeedle(haystack) {
+      return `found the needle at position ${haystack.indexOf('needle')}`
+    }
+  
+  console.log(findNeedle(['3', '123124234', undefined, 'needle', 'world', 'hay', 2, '3', true, false]))
