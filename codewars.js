@@ -776,3 +776,24 @@ function findNeedle(haystack) {
     }
   
   console.log(findNeedle(['3', '123124234', undefined, 'needle', 'world', 'hay', 2, '3', true, false]))
+
+//   Дано два массива aи bнапишите функцию comp(a, b)(или compSame(a, b)), которая проверяет, 
+//   содержат ли два массива «одинаковые» элементы с одинаковой кратностью (кратность элемента — это количество раз, которое он встречается). 
+//   «Одинаковые» здесь означает, что элементы в bявляются квадратами элементов в a, независимо от порядка.
+
+function comp(array1, array2){
+    if(Array.isArray(array1) && array1.length && Array.isArray(array2) && array2.length){
+    const res = []
+    for(let i = 0; i < array2.length; i++){
+        const sqrt = Math.sqrt(array2[i])
+        res.push(sqrt)
+    }
+    const res1 = res.sort((a,b) => a - b);
+    const res2 = array1.sort((a,b) => a - b);
+    const equal = res.length === array1.length && res.every((el, i) => el === array1[i])
+    return equal
+}
+else {return undefined}
+}
+
+  console.log(comp([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361]))
