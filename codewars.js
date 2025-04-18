@@ -782,18 +782,38 @@ function findNeedle(haystack) {
 //   «Одинаковые» здесь означает, что элементы в bявляются квадратами элементов в a, независимо от порядка.
 
 function comp(array1, array2){
-    if(Array.isArray(array1) && array1.length && Array.isArray(array2) && array2.length){
-    const res = []
-    for(let i = 0; i < array2.length; i++){
-        const sqrt = Math.sqrt(array2[i])
-        res.push(sqrt)
-    }
+    if(Array.isArray(array1) && Array.isArray(array2)){
+    const res = array2.map(el => Math.sqrt(el))
+    
     const res1 = res.sort((a,b) => a - b);
     const res2 = array1.sort((a,b) => a - b);
-    const equal = res.length === array1.length && res.every((el, i) => el === array1[i])
-    return equal
+    for(let i = 0; i < res1.length; i++){
+        const equal = res1[i] === res2[i]
+        if(!equal) return false
+    }
+    return true
 }
-else {return undefined}
+return false
 }
 
-  console.log(comp([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361]))
+  console.log(comp([], []))
+
+//   Вам дана задача определить, является ли указанное положительное целое число совершенным кубом — 
+//   числом, которое является кубом целого числа !
+
+function youAreACube (value){
+    const x2 = Math.cbrt(value)
+    
+    return Number.isInteger(x2)
+    }
+    console.log(youAreACube(99))
+
+    // Дано массив, найти дубликаты в этом массиве и вернуть новый массив этих дубликатов. 
+    // Элементы возвращаемого массива должны появляться в том порядке, в котором они впервые появились как дубликаты.
+
+    function duplicates(arr) {
+        const arrWithoutStr = arr.filter((el) => typeof el === "number")
+        return arrWithoutStr
+      }
+      console.log(duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3, "5"]))
+      
