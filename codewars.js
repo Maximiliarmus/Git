@@ -195,11 +195,11 @@ console.log(calculateWeight(80, 1.8))
 
 // Напишите функцию для разбиения строки и преобразования ее в массив слов.
 
-function parseStr(str) {
-    const parseStr = str.split(" ")
-    return parseStr
-}
-console.log(parseStr("I love arrays they are my favorite"))
+// function parseStr(str) {
+//     const parseStr = str.split(" ")
+//     return parseStr
+// }
+// console.log(parseStr("I love arrays they are my favorite"))
 
 // Завершите метод, который принимает логическое значение и возвращает 
 // "Yes"строку для true или "No"строку для false.
@@ -706,13 +706,13 @@ console.log(sumTwoSmallestNumbers([456, 456, 510, 944]))
 // Дана строка, определить, является ли она панграммой. Верните True, если это так, False, если нет. 
 // Игнорируйте цифры и знаки препинания.
 
-function isPangram(string){
+function isPangram(string) {
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     const lowerString = string.toLowerCase()
 
     return [...alphabet].every(letter => lowerString.includes(letter))
-  }
-  console.log(isPangram("The quick brown fox jumps over the lazy do."))
+}
+console.log(isPangram("The quick brown fox jumps over the lazy do."))
 
 // Создайте функцию с двумя аргументами, которая будет возвращать массив первых nкратных x.
 
@@ -721,12 +721,12 @@ function isPangram(string){
 // Возвращает результаты в виде массива или списка (в зависимости от языка).
 
 function countBy(x, n) {
-    
-    const z = new Array(n).fill(0).map((_,i) => (i + 1) * x)
-    
+
+    const z = new Array(n).fill(0).map((_, i) => (i + 1) * x)
+
     return z;
-  }
-  console.log(countBy(1,10))
+}
+console.log(countBy(1, 10))
 
 //   Создайте программу, которая фильтрует список строк и возвращает список, 
 //   содержащий только имена ваших друзей.
@@ -734,26 +734,26 @@ function countBy(x, n) {
 // Если в имени ровно 4 буквы, то это точно ваш друг! 
 // В противном случае, будьте уверены, это не...
 
-function friend(friends){
+function friend(friends) {
     const res = []
-    for(let i = 0; i < friends.length; i++){
-        if(friends[i].length === 4){
+    for (let i = 0; i < friends.length; i++) {
+        if (friends[i].length === 4) {
             res.push(friends[i])
         }
     }
     return res
-  }
-  console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
+}
+console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
 
 //   Дан треугольник из последовательных нечетных чисел:
 //   Вычислите сумму чисел в n- й строке этого треугольника (начиная с индекса 1), например: ( Вход --> Выход )
 
 function rowSumOddNumbers(n) {
-	let firstNumber = n * (n - 1) + 1;
-    if(n === 1){return n}
+    let firstNumber = n * (n - 1) + 1;
+    if (n === 1) { return n }
     const arr = [];
     arr.length = n;
-    for(let i = 1; i < n; i++){
+    for (let i = 1; i < n; i++) {
         arr[0] = firstNumber;
         arr[i] = firstNumber + (i * 2);
     }
@@ -772,48 +772,130 @@ console.log(rowSumOddNumbers(42))
 // "found the needle at position "плюс indexон нашел иголку, так что:
 
 function findNeedle(haystack) {
-      return `found the needle at position ${haystack.indexOf('needle')}`
-    }
-  
-  console.log(findNeedle(['3', '123124234', undefined, 'needle', 'world', 'hay', 2, '3', true, false]))
+    return `found the needle at position ${haystack.indexOf('needle')}`
+}
+
+console.log(findNeedle(['3', '123124234', undefined, 'needle', 'world', 'hay', 2, '3', true, false]))
 
 //   Дано два массива aи bнапишите функцию comp(a, b)(или compSame(a, b)), которая проверяет, 
 //   содержат ли два массива «одинаковые» элементы с одинаковой кратностью (кратность элемента — это количество раз, которое он встречается). 
 //   «Одинаковые» здесь означает, что элементы в bявляются квадратами элементов в a, независимо от порядка.
 
-function comp(array1, array2){
-    if(Array.isArray(array1) && Array.isArray(array2)){
-    const res = array2.map(el => Math.sqrt(el))
-    
-    const res1 = res.sort((a,b) => a - b);
-    const res2 = array1.sort((a,b) => a - b);
-    for(let i = 0; i < res1.length; i++){
-        const equal = res1[i] === res2[i]
-        if(!equal) return false
+function comp(array1, array2) {
+    if (Array.isArray(array1) && Array.isArray(array2)) {
+        const res = array2.map(el => Math.sqrt(el))
+
+        const res1 = res.sort((a, b) => a - b);
+        const res2 = array1.sort((a, b) => a - b);
+        for (let i = 0; i < res1.length; i++) {
+            const equal = res1[i] === res2[i]
+            if (!equal) return false
+        }
+        return true
     }
-    return true
-}
-return false
+    return false
 }
 
-  console.log(comp([], []))
+console.log(comp([], []))
 
 //   Вам дана задача определить, является ли указанное положительное целое число совершенным кубом — 
 //   числом, которое является кубом целого числа !
 
-function youAreACube (value){
+function youAreACube(value) {
     const x2 = Math.cbrt(value)
-    
+
     return Number.isInteger(x2)
+}
+console.log(youAreACube(99))
+
+// Дано массив, найти дубликаты в этом массиве и вернуть новый массив этих дубликатов. 
+// Элементы возвращаемого массива должны появляться в том порядке, в котором они впервые появились как дубликаты.
+
+function duplicates(arr) {
+    const map = new Map();
+    const res = []
+    const added = new Set();
+    for(let i = 0; i < arr.length; i++){
+        const currentCount = map.get(arr[i]) || 0;
+        map.set(arr[i], currentCount + 1)
+       console.log(currentCount)
+    if(currentCount + 1 === 2 && !added.has(arr[i])){
+        res.push(arr[i])
+        added.add(arr[i])
     }
-    console.log(youAreACube(99))
+    
+    }
+    
+    
+    
+    return res
+}
+console.log(duplicates([1, 2, 3, 3, 2, 1]))
 
-    // Дано массив, найти дубликаты в этом массиве и вернуть новый массив этих дубликатов. 
-    // Элементы возвращаемого массива должны появляться в том порядке, в котором они впервые появились как дубликаты.
+// Дан массив целых чисел, найдите то, которое встречается нечетное количество раз.
 
-    function duplicates(arr) {
-        const arrWithoutStr = arr.filter((el) => typeof el === "number")
-        return arrWithoutStr
-      }
-      console.log(duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3, "5"]))
-      
+// Всегда будет только одно целое число, которое встречается нечетное количество раз.
+
+function findOdd(A) {
+    const map = new Map()
+    for(let i = 0; i < A.length; i++){
+        if(map.has(A[i])){
+            const currentCount = map.get(A[i]);
+            map.set(A[i], currentCount + 1)
+        }
+        else{map.set(A[i], 1)}
+    }
+        const res = []
+        for(const [key, value] of map.entries()){
+            if(value % 2 !== 0){
+                res.push(key)
+            }
+        }
+        return res[0];
+    
+    
+  }
+console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]))
+
+// Реализуйте функцию, которая преобразует заданное логическое значение в его строковое представление.
+
+function booleanToString(b){
+    return b.toString()
+  }
+  console.log(booleanToString(true))
+
+//   Создайте функцию, которая переводит заданную строку ДНК в РНК.
+
+function DNAtoRNA(dna) {
+    let letter = "T"
+    const res = dna.split("")
+    const res1 = []
+    for(let i = 0; i < res.length; i++){
+        if(res[i] === letter){
+            res[i] = "U"
+        }
+        res1.push(res[i]) 
+    }
+    
+    return res1.join("")
+  }
+  console.log(DNAtoRNA(("TTTT")))
+
+//   Построить башню в форме пирамиды, как массив/список строк, заданных положительным целым числом number of floors. 
+//   Блок башни представлен "*"символом.
+
+function towerBuilder(nFloors) {
+    const probel = ' '
+    const star = '*'
+    const res = []
+    res.length = nFloors;
+    
+    for(let i = 0; i < res.length; i++){
+      res[0] = star.repeat(res.length * 2 - 1).split('')
+      res[i] = res[0].splice(0, i, probel.repeat(i)).push(" ")
+      console.log(res[i])
+    }
+    return res
+
+  }
+console.log(towerBuilder(3))
