@@ -815,19 +815,19 @@ function duplicates(arr) {
     const map = new Map();
     const res = []
     const added = new Set();
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         const currentCount = map.get(arr[i]) || 0;
         map.set(arr[i], currentCount + 1)
-       console.log(currentCount)
-    if(currentCount + 1 === 2 && !added.has(arr[i])){
-        res.push(arr[i])
-        added.add(arr[i])
+        console.log(currentCount)
+        if (currentCount + 1 === 2 && !added.has(arr[i])) {
+            res.push(arr[i])
+            added.add(arr[i])
+        }
+
     }
-    
-    }
-    
-    
-    
+
+
+
     return res
 }
 console.log(duplicates([1, 2, 3, 3, 2, 1]))
@@ -838,31 +838,31 @@ console.log(duplicates([1, 2, 3, 3, 2, 1]))
 
 function findOdd(A) {
     const map = new Map()
-    for(let i = 0; i < A.length; i++){
-        if(map.has(A[i])){
+    for (let i = 0; i < A.length; i++) {
+        if (map.has(A[i])) {
             const currentCount = map.get(A[i]);
             map.set(A[i], currentCount + 1)
         }
-        else{map.set(A[i], 1)}
+        else { map.set(A[i], 1) }
     }
-        const res = []
-        for(const [key, value] of map.entries()){
-            if(value % 2 !== 0){
-                res.push(key)
-            }
+    const res = []
+    for (const [key, value] of map.entries()) {
+        if (value % 2 !== 0) {
+            res.push(key)
         }
-        return res[0];
-    
-    
-  }
-console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]))
+    }
+    return res[0];
+
+
+}
+console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
 
 // Реализуйте функцию, которая преобразует заданное логическое значение в его строковое представление.
 
-function booleanToString(b){
+function booleanToString(b) {
     return b.toString()
-  }
-  console.log(booleanToString(true))
+}
+console.log(booleanToString(true))
 
 //   Создайте функцию, которая переводит заданную строку ДНК в РНК.
 
@@ -870,16 +870,16 @@ function DNAtoRNA(dna) {
     let letter = "T"
     const res = dna.split("")
     const res1 = []
-    for(let i = 0; i < res.length; i++){
-        if(res[i] === letter){
+    for (let i = 0; i < res.length; i++) {
+        if (res[i] === letter) {
             res[i] = "U"
         }
-        res1.push(res[i]) 
+        res1.push(res[i])
     }
-    
+
     return res1.join("")
-  }
-  console.log(DNAtoRNA(("TTTT")))
+}
+console.log(DNAtoRNA(("TTTT")))
 
 //   Построить башню в форме пирамиды, как массив/список строк, заданных положительным целым числом number of floors. 
 //   Блок башни представлен "*"символом.
@@ -887,15 +887,64 @@ function DNAtoRNA(dna) {
 function towerBuilder(nFloors) {
     const probel = ' '
     const star = '*'
-    const res = []
-    res.length = nFloors;
-    
-    for(let i = 0; i < res.length; i++){
-      res[0] = star.repeat(res.length * 2 - 1).split('')
-      res[i] = res[0].splice(0, i, probel.repeat(i)).push(" ")
-      console.log(res[i])
-    }
-    return res
+    const res = [];
 
-  }
-console.log(towerBuilder(3))
+
+    for (let i = 0; i < nFloors; i++) {
+
+        let starCount = star.repeat((nFloors * 2 - 1) - 2 * i)
+        let spaceCount = probel.repeat(i)
+        const res1 = `${spaceCount}${starCount}${spaceCount}`;
+        res.push(res1)
+
+    }
+
+    return res.reverse()
+
+}
+console.log(towerBuilder(4))
+
+// Вы были в походе с друзьями далеко от дома, но когда пришло время возвращаться, вы поняли, что топливо заканчивается, 
+// а ближайшая заправка находится 50в нескольких милях! Вы знаете, что в среднем ваша машина проезжает около 25 миль на галлон. 
+// Остались 2галлоны.
+
+// Учитывая эти факторы, напишите функцию, которая сообщит вам, возможно ли добраться до насоса или нет.
+
+// Функция должна возвращать значение, true если это возможно, и false наоборот.
+
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+    return distanceToPump <= mpg * fuelLeft
+};
+console.log(zeroFuel(100, 50, 1))
+
+//   Напишите функцию, которая берет массив слов, объединяет их в предложение и возвращает предложение. 
+//   Вы можете игнорировать необходимость очистки слов или добавления знаков препинания, 
+//   но вы должны добавлять пробелы между каждым словом. Будьте осторожны, в начале или конце предложения не должно быть пробела!
+
+function smash(words) {
+    return words.join(" ")
+};
+console.log(smash(["hello", "amazing", "world"]))
+
+//  Реализуйте функцию, которая принимает 3 целочисленных значения a, b, c. 
+//  Функция должна возвращать true, если треугольник может быть построен со сторонами заданной длины, и false в любом другом случае.
+
+function isTriangle(a, b, c) {
+    return a + b > c && a + c > b && b + c > a;
+}
+console.log(isTriangle(7, 2, 2))
+
+// Вам будет дано число, и вам нужно будет вернуть его как строку в развернутой форме 
+
+function expandedForm(num) {
+    const numToStr = num.toString().split("").reverse()
+    const res = []
+    for (let i = 0; i < numToStr.length; i++) {
+        numToStr[i] = parseInt(numToStr[i])
+        const resNum = numToStr[i] * Math.pow(10, i)
+        if (resNum > 0) { res.push(resNum) }
+    }
+    const res1 = res.reverse().join(" + ")
+    return res1
+}
+console.log(expandedForm(1))
