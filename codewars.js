@@ -948,3 +948,88 @@ function expandedForm(num) {
     return res1
 }
 console.log(expandedForm(1))
+
+// Дано множество чисел, вернуть аддитивное обратное для каждого.
+//  Каждое положительное становится отрицательным, а отрицательное становится положительным.
+
+function invert(array) {
+    return array.map(num => num * -1);
+}
+console.log(invert([1, -2, 3, -4, 5]))
+
+function invert(array) {
+    return array.map(num => num * -1);
+}
+
+//  Наша футбольная команда завершила чемпионат.
+
+// Результаты матчей нашей команды записаны в коллекцию строк. Каждый матч представлен строкой в ​​формате "x:y", 
+// где x- счет нашей команды, а y- счет наших соперников.
+
+// Например: ["3:1", "2:2", "0:1", ...]
+
+// Очки начисляются за каждый матч следующим образом:
+
+// если x > y: 3 очка (победа)
+// если x < y: 0 баллов (проигрыш)
+// если x = y: 1 балл (ничья)
+// Нам нужно написать функцию, которая берет эту коллекцию и возвращает количество очков, 
+// xнабранных нашей командой ( ) в чемпионате по правилам, приведенным выше.
+
+// Примечания:
+
+// наша команда всегда играет 10 матчей в чемпионате
+// 0 <= х <= 4
+// 0 <= у <= 4
+
+function points(games) {
+    const gamesNums = games.map(pair => pair.split(":").map(Number))
+    let counter = 0;
+    for (let i = 0; i < gamesNums.length; i++) {
+        if (gamesNums[i]?.[0] > gamesNums[i]?.[1]) { counter += 3 }
+        else if (gamesNums[i]?.[0] === gamesNums[i]?.[1]) { counter += 1 }
+    }
+    return counter
+}
+console.log(points(["0:1", "0:2", "0:3", "0:4", "1:2", "1:3", "1:4", "2:3", "2:4", "3:4"]))
+
+//   Завершите решение так, чтобы функция разрывала верблюжий регистр, используя пробел между словами.
+
+function solution(string) {
+    return string.replace(/([a-z])([A-Z])/g, '$1 $2');
+}
+console.log(solution("camelCasingTest"))
+
+//   Давайте играть! Вам нужно вернуть, какой игрок выиграл! В случае ничьей верните Draw!.
+
+const rps = (p1, p2) => {
+    switch (true) {
+        case p1 === 'scissors' && p2 === 'paper':
+            return "Player 1 won!"
+        case p1 === 'scissors' && p2 === 'rock':
+            return "Player 2 won!"
+        case p1 === 'paper' && p2 === 'scissors':
+            return "Player 2 won!"
+        case p1 === 'paper' && p2 === 'rock':
+            return "Player 1 won!"
+            case p1 === 'rock' && p2 === 'scissors':
+                return "Player 1 won!"
+                case p1 === 'rock' && p2 === 'paper':
+                    return "Player 2 won!"
+                    default: return "Draw!"
+    }
+};
+console.log(rps('rock', 'paper'))
+
+// Учитывая строку, необходимо вернуть строку, в которой каждый символ (с учетом регистра) повторяется один раз.
+
+function doubleChar(str) {
+    const res = str.split("")
+    const doubleChar = []
+    for(let i = 0; i < res.length; i++){
+        const double = res[i].repeat(2)
+        doubleChar.push(double)
+    }
+    return doubleChar.join('')
+  }
+  console.log(doubleChar("abcd"))
