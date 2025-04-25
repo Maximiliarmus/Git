@@ -1033,3 +1033,103 @@ function doubleChar(str) {
     return doubleChar.join('')
   }
   console.log(doubleChar("abcd"))
+  
+// Дан массив целых чисел в виде строк и чисел, вернуть сумму значений массива, как если бы все они были числами.
+
+// Ответ дайте числом.
+
+function sumMix(x){
+const numX = x.map(str => parseInt(str)).reduce((acc, num) => acc + num, 0)
+return numX
+}
+console.log(sumMix([9, 3, '7', '3']))
+
+// Вам даны два внутренних угла (в градусах) треугольника.
+// Напишите функцию, возвращающую третье значение.
+// Примечание: будут проверяться только положительные целые числа.
+
+function otherAngle(a, b) {
+    let corner = 180 - (a + b)
+    return corner;
+  }
+  console.log(otherAngle(30, 60))
+
+//   В строках ДНК символы "A" и "T" являются дополнениями друг друга, как "C" и "G". 
+//   Ваша функция получает одну сторону ДНК (строки, за исключением Haskell); 
+//   вам нужно вернуть другую, дополнительную сторону. Цепь ДНК никогда не бывает пустой или ДНК вообще нет 
+  function dnaStrand(dna){
+    return dna.replace(/[ATCG]/g, char => {
+        switch(char){
+            case 'A': return 'T';
+            case 'T': return 'A';
+            case 'C': return 'G';
+            case 'G': return 'C';
+            default: return char;
+        }
+    })
+  }
+  console.log(dnaStrand("ATTGC"))
+
+//   Напишите функцию, которая возвращает минимальное и максимальное число из указанного списка/массива.
+
+function minMax(arr){
+    const max = Math.max(...arr)
+    const min = Math.min(...arr)
+    return [min, max]
+  }
+  console.log(minMax([1, 2, 3, 4, 5]))
+
+//   Очень просто: дано число (целое / десятичное / и то, и другое в зависимости от языка), 
+//   найти его противоположность (аддитивное обратное число).
+
+function opposite(number) {
+    return -number
+  }
+  console.log(opposite(-3))
+
+//   Напишите функцию RemoveExclamationMarks, которая удаляет все восклицательные знаки из заданной строки.
+
+function removeExclamationMarks(s) {
+    return s.replace(/!/g, '');
+  }
+  console.log(removeExclamationMarks("Hello World!"))
+
+//   Вам даны lengthи width4-стороннего многоугольника. 
+//   Многоугольник может быть как прямоугольником, так и квадратом.
+// Если это квадрат, верните его площадь. Если это прямоугольник, верните его периметр.
+
+const areaOrPerimeter = function(l , w) {
+    const per = l * 2 + w * 2;
+    const square = Math.pow(l, 2)
+    if(l === w){return square}
+    return per
+  };
+  console.log(areaOrPerimeter(6, 10))
+
+//   Основная идея — подсчитать все встречающиеся символы в строке. 
+//   Если у вас есть строка типа aba, то результатом должно быть {'a': 2, 'b': 1}.
+
+// А если строка пустая? Тогда результатом должен быть пустой литерал объекта, {}.
+
+function count(string) {
+    const arr = string.split('')
+    const mapped = new Map()
+    for (let i = 0; i < arr.length; i++) {
+        if(mapped.has(arr[i])){
+            const currentLetter = mapped.get(arr[i])
+            mapped.set(arr[i], currentLetter + 1)
+            
+        }
+        else{mapped.set(arr[i], 1);}
+  }
+  const res = {}
+  for(const [key,value] of mapped){
+    res[key] = value
+  }
+  return res
+}
+  console.log(count('aba'))
+
+//   Напишите метод, который принимает строку в качестве аргумента и группирует количество появлений каждого символа в строке в виде хеша, 
+//   отсортированного по наибольшему количеству вхождений.
+
