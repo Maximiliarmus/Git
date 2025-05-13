@@ -1012,11 +1012,11 @@ const rps = (p1, p2) => {
             return "Player 2 won!"
         case p1 === 'paper' && p2 === 'rock':
             return "Player 1 won!"
-            case p1 === 'rock' && p2 === 'scissors':
-                return "Player 1 won!"
-                case p1 === 'rock' && p2 === 'paper':
-                    return "Player 2 won!"
-                    default: return "Draw!"
+        case p1 === 'rock' && p2 === 'scissors':
+            return "Player 1 won!"
+        case p1 === 'rock' && p2 === 'paper':
+            return "Player 2 won!"
+        default: return "Draw!"
     }
 };
 console.log(rps('rock', 'paper'))
@@ -1026,21 +1026,21 @@ console.log(rps('rock', 'paper'))
 function doubleChar(str) {
     const res = str.split("")
     const doubleChar = []
-    for(let i = 0; i < res.length; i++){
+    for (let i = 0; i < res.length; i++) {
         const double = res[i].repeat(2)
         doubleChar.push(double)
     }
     return doubleChar.join('')
-  }
-  console.log(doubleChar("abcd"))
-  
+}
+console.log(doubleChar("abcd"))
+
 // Дан массив целых чисел в виде строк и чисел, вернуть сумму значений массива, как если бы все они были числами.
 
 // Ответ дайте числом.
 
-function sumMix(x){
-const numX = x.map(str => parseInt(str)).reduce((acc, num) => acc + num, 0)
-return numX
+function sumMix(x) {
+    const numX = x.map(str => parseInt(str)).reduce((acc, num) => acc + num, 0)
+    return numX
 }
 console.log(sumMix([9, 3, '7', '3']))
 
@@ -1051,15 +1051,15 @@ console.log(sumMix([9, 3, '7', '3']))
 function otherAngle(a, b) {
     let corner = 180 - (a + b)
     return corner;
-  }
-  console.log(otherAngle(30, 60))
+}
+console.log(otherAngle(30, 60))
 
 //   В строках ДНК символы "A" и "T" являются дополнениями друг друга, как "C" и "G". 
 //   Ваша функция получает одну сторону ДНК (строки, за исключением Haskell); 
 //   вам нужно вернуть другую, дополнительную сторону. Цепь ДНК никогда не бывает пустой или ДНК вообще нет 
-  function dnaStrand(dna){
+function dnaStrand(dna) {
     return dna.replace(/[ATCG]/g, char => {
-        switch(char){
+        switch (char) {
             case 'A': return 'T';
             case 'T': return 'A';
             case 'C': return 'G';
@@ -1067,44 +1067,44 @@ function otherAngle(a, b) {
             default: return char;
         }
     })
-  }
-  console.log(dnaStrand("ATTGC"))
+}
+console.log(dnaStrand("ATTGC"))
 
 //   Напишите функцию, которая возвращает минимальное и максимальное число из указанного списка/массива.
 
-function minMax(arr){
+function minMax(arr) {
     const max = Math.max(...arr)
     const min = Math.min(...arr)
     return [min, max]
-  }
-  console.log(minMax([1, 2, 3, 4, 5]))
+}
+console.log(minMax([1, 2, 3, 4, 5]))
 
 //   Очень просто: дано число (целое / десятичное / и то, и другое в зависимости от языка), 
 //   найти его противоположность (аддитивное обратное число).
 
 function opposite(number) {
     return -number
-  }
-  console.log(opposite(-3))
+}
+console.log(opposite(-3))
 
 //   Напишите функцию RemoveExclamationMarks, которая удаляет все восклицательные знаки из заданной строки.
 
 function removeExclamationMarks(s) {
     return s.replace(/!/g, '');
-  }
-  console.log(removeExclamationMarks("Hello World!"))
+}
+console.log(removeExclamationMarks("Hello World!"))
 
 //   Вам даны lengthи width4-стороннего многоугольника. 
 //   Многоугольник может быть как прямоугольником, так и квадратом.
 // Если это квадрат, верните его площадь. Если это прямоугольник, верните его периметр.
 
-const areaOrPerimeter = function(l , w) {
+const areaOrPerimeter = function (l, w) {
     const per = l * 2 + w * 2;
     const square = Math.pow(l, 2)
-    if(l === w){return square}
+    if (l === w) { return square }
     return per
-  };
-  console.log(areaOrPerimeter(6, 10))
+};
+console.log(areaOrPerimeter(6, 10))
 
 //   Основная идея — подсчитать все встречающиеся символы в строке. 
 //   Если у вас есть строка типа aba, то результатом должно быть {'a': 2, 'b': 1}.
@@ -1115,43 +1115,43 @@ function count(string) {
     const arr = string.split('')
     const mapped = new Map()
     for (let i = 0; i < arr.length; i++) {
-        if(mapped.has(arr[i])){
+        if (mapped.has(arr[i])) {
             const currentLetter = mapped.get(arr[i])
             mapped.set(arr[i], currentLetter + 1)
-            
+
         }
-        else{mapped.set(arr[i], 1);}
-  }
-  const res = {}
-  for(const [key,value] of mapped){
-    res[key] = value
-  }
-  return res
+        else { mapped.set(arr[i], 1); }
+    }
+    const res = {}
+    for (const [key, value] of mapped) {
+        res[key] = value
+    }
+    return res
 }
-  console.log(count('aba'))
+console.log(count('aba'))
 
 //   Изограмма — это слово, в котором нет повторяющихся букв, последовательных или непоследовательных. 
 //   Реализуйте функцию, которая определяет, является ли строка, содержащая только буквы, изограммой. 
 //   Предположим, что пустая строка — изограмма. Игнорировать регистр букв.
 
-function isIsogram(str){
+function isIsogram(str) {
     const arr = str.toLowerCase().split("")
     const map = new Map()
-    for(let i = 0; i < arr.length; i++){
-        if(map.has(arr[i])){
+    for (let i = 0; i < arr.length; i++) {
+        if (map.has(arr[i])) {
             const currentLetter = map.get(arr[i])
             map.set(arr[i], currentLetter + 1)
         }
-        else{
+        else {
             map.set(arr[i], 1)
         }
-    for(const value of map.values()){
-        if(value !== 1){return false}
-    }
+        for (const value of map.values()) {
+            if (value !== 1) { return false }
+        }
     }
     return true
-  }
-  console.log(isIsogram("aba"))
+}
+console.log(isIsogram("aba"))
 
 //   Вы живете в городе Картезия, где все дороги расположены в идеальной сетке. 
 //   Вы прибыли на встречу на десять минут раньше, 
@@ -1166,22 +1166,324 @@ function isIsogram(str){
 //   конечно же, вернет вас в исходную точку. В противном случае возвращайте false .
 
 function isValidWalk(walk) {
+    if (walk.length !== 10) { return false }
     const map = new Map()
-    for(let i = 0; i < walk.length; i++){
-        if(map.has(walk[i])){
+    for (let i = 0; i < walk.length; i++) {
+        if (map.has(walk[i])) {
             const currentLetter = map.get(walk[i])
             map.set(walk[i], currentLetter + 1)
         }
-        else{
+        else {
             map.set(walk[i], 1)
         }
     }
-    const res = [...map.values()]
-    const sumValues = res.reduce((sum, num) => sum + num)
-    const set = new Set([...res])
-    // return set.size === 2 && sumValues === 10
+
+    return map.get('n') === map.get('s') && map.get('w') === map.get('e')
+
+}
+console.log(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']))
+
+//   Напишите функцию dirReduc, которая будет принимать массив строк и возвращать массив строк, 
+//   в котором удалены ненужные направления (W<->E или S<->N рядом ).
+
+function dirReduc(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        if (arr.length === 4 && arr[0] !== arr[i]) { return arr }
+
+    }
+
+    return false
+}
+console.log(dirReduc(["NORTH", "WEST", "SOUTH", "EAST"]))
+
+// При заданной длине, смещении и списке перемещаем окно этой длины, 
+// перемещаясь на это смещение каждый шаг, по списку, возвращая список списков.
+
+// Окна могут перекрывать друг друга или пропускать определенные элементы. Все окна должны быть заданной длины; 
+// если после определенного смещения остается недостаточно элементов, завершите список списков. 
+// Можно брать элементы 0из пустого списка, поэтому позаботьтесь о window(0,offset,list)правильной обработке.
+
+function window(length, offset, list) {
+    const windows = []
+
+    for (let i = 0; i <= list.length; i += offset) {
+        const add = list.slice(i, i + length)
+        if (add.length === length)
+            windows.push(add)
+
+    }
+
+    return windows;
+}
+console.log(window(0, 1, [0, 1, 2]))
+
+//   Задача о максимальной сумме подмассива состоит 
+//   в нахождении максимальной суммы непрерывной подпоследовательности в массиве или списке целых чисел:
+
+const maxSequence = function (arr) {
+    if (arr.every(num => num < 0)) { return 0 }
+    const sums = []
+    for (let i = 0; i < arr.length; i++) {
+        let sum = 0
+        for (let j = i; j < arr.length; j++) {
+            sum += arr[j]
+            sums.push(sum)
+        }
+    }
+    return Math.max(...sums)
+}
+console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+
+//   В этом простом задании вам дано число и вы должны сделать его отрицательным. 
+//   Но, может быть, число уже отрицательное?
+
+function makeNegative(num) {
+    if (num < 0) { return -num }
+    return num
+}
+console.log(makeNegative(-11))
+
+//   Алекс только что получил новый обруч, он ему очень нравится, но он расстроен, 
+//   потому что его младший брат лучше его.
+
+// Напишите программу, в которой Алекс может ввести ( n), сколько раз обруч сделает оборот, 
+// и программа вернет ему ободряющее сообщение:
+
+// Если Алекс наберет 10 или более обручей, верните веревку "Great, now move on to tricks".
+// Если он не набрал 10 обручей, верните веревку "Keep at it until you get it".
+
+function hoopCount(n) {
+    if (n > 10) { return 'Great, now move on to tricks' }
+    return 'Keep at it until you get it'
+}
+console.log(hoopCount(11))
+
+//  Ваши одноклассники попросили вас скопировать для них некоторые документы. 
+//  Вы знаете, что есть 'n' одноклассников и документы имеют 'm' страниц.
+
+// Ваша задача — подсчитать, сколько пустых страниц вам нужно. Если n < 0 или m < 0 вернуть 0.
+
+function paperwork(n, m) {
+    if (n >= 0 && m >= 0) { return n * m }
+    return 0
+}
+console.log(paperwork(5, 0))
+
+// Вы пишете код для управления светофорами вашего города. Вам нужна функция для обработки каждого изменения с green, 
+// на yellow, на red, а затем greenснова на .
+
+// Завершите функцию, которая принимает строку в качестве аргумента, 
+// представляющего текущее состояние света, и возвращает строку, 
+// представляющую состояние, в которое должен измениться свет.
+
+function updateLight(current) {
+    if (current === 'red') { return 'green' }
+    else if (current === 'green') { return 'yellow' }
+    else if (current === 'yellow') { return 'red' }
+
+}
+
+//   На этот раз мы хотим написать вычисления с использованием функций и получить результаты. 
+//   Давайте рассмотрим несколько примеров:
+const  dividedBy = (number) => {
+    const operator = '/'
+    if (number !== 0) {
+        return {
+            operator,
+            number
+        }
+    }
+    return 'Делить на 0 нельзя!'
+}
+
+const times = (number) => {
+    const operator = '*'
+
+    return {
+        operator,
+        number
+    }
+}
+
+const plus = (number) => {
+    const operator = '+'
+
+    return {
+        operator,
+        number
+    }
+}
+
+const minus = (number) => {
+    const operator = '-'
+
+    return {
+        operator,
+        number
+    }
+}
+
+const one = (result) => {
+    const number = 1
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const two = (result) => {
+    const number = 2
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const three = (result) => {
+    const number = 3
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const four = (result) => {
+    const number = 4
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const five = (result) => {
+    const number = 5
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const six = (result) => {
+    const number = 6
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const seven = (result) => {
+    const number = 7
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const eight = (result) => {
+    const number = 8
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const nine = (result) => {
+    const number = 9
+
+    if (result?.operator) {
+        return Math.floor(eval(`${number} ${result.operator} ${result.number}`))
+    }
+
+    return number
+}
+
+const zero = (result) => {
+    const number = 0
+
+    if (result?.operator) {
+        return eval(`${number} ${result.operator} ${result.number}`)
+    }
+    else {throw new Error('Делить на 0 нельзя')} 
+}
+
+try{
+    console.log(one(dividedBy(zero())))
+}
+catch(e){
+    console.error(e.message)
+}
+// console.log(one(dividedBy(zero())))
+
+// Ваша задача — создать функцию, которая может принимать любое неотрицательное целое число 
+// в качестве аргумента и возвращать его с его цифрами в порядке убывания. 
+// По сути, переставьте цифры так, чтобы создать максимально возможное число.
+
+function descendingOrder(n) {
+    const arr = Array.from(n.toString())
+    const res = arr.map(Number).sort((a, b) => b - a).join('')
+    return parseInt(res)
+}
+console.log(descendingOrder(12345))
+
+//   Ваша команда пишет новый модный текстовый редактор, 
+//   и вам поручено реализовать нумерацию строк.
+
+// Напишите функцию, которая принимает список строк и возвращает каждую строку, 
+// снабженную правильным числом.
+
+const number = function (array) {
+    const res = []
+    for (let i = 0; i < array.length; i++) {
+        let obj = `${i + 1}: ${array[i]}`
+        res.push(obj)
+    }
     return res
 
-  }
-  console.log(isValidWalk(['n','s','n','s','n','s','n','s','n','s']))
+}
+console.log(number(["a", "b", "c"]))
 
+//   Вам будет дана непустая строка. Ваша задача — вернуть средний символ(ы) строки.
+
+// Если длина строки нечетная, вернуть средний символ.
+// Если длина строки четная, вернуть 2 средних символа.
+
+function getMiddle(s) {
+    const res = s.split("")
+    const length = s.length
+    const middle = Math.floor(length / 2)
+    for (let i = 0; i < res.length; i++) {
+        if (res.length % 2 !== 0) {
+
+            return res[middle]
+        }
+        return res[middle - 1] + res[middle]
+    }
+}
+console.log(getMiddle('middle'))
+
+//   Реализуйте функцию, которая вычисляет разницу между двумя списками. Функция должна удалить все вхождения элементов из первого списка ( a), которые присутствуют во втором списке ( b).
+//    Порядок элементов в первом списке должен быть сохранен в результате.
+
+function arrayDiff(a, b) {
+    if (b.length === 0) { return a }
+    else if (a.length === 0) { return [] }
+    const c = a.concat(b)
+    return c.filter((el, index) => c.indexOf(el) !== index)
+}
+console.log(arrayDiff([1, 2, 2], [1]))
