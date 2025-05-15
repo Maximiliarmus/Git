@@ -1481,9 +1481,114 @@ console.log(getMiddle('middle'))
 //    Порядок элементов в первом списке должен быть сохранен в результате.
 
 function arrayDiff(a, b) {
-    if (b.length === 0) { return a }
-    else if (a.length === 0) { return [] }
-    const c = a.concat(b)
-    return c.filter((el, index) => c.indexOf(el) !== index)
+    return a.filter((el) => !b.includes(el))
 }
 console.log(arrayDiff([1, 2, 2], [1]))
+
+// Вам дадут массив целых чисел. Ваша задача — взять этот массив и найти индекс N, 
+// где сумма целых чисел слева от N равна сумме целых чисел справа от N.
+
+// Если индекса, который бы это сделал, нет, верните -1.
+
+function findEvenIndex(arr)
+{
+  const sum = arr.reduce((acc, num) => acc + num)
+  let runSum = 0;
+  for(let i = 0; i < arr.length; i++){
+    const isRightSum = (sum - arr[i]) / 2 === runSum
+    runSum += arr[i]
+    if(isRightSum){return i}
+    
+  }
+  return -1
+}
+console.assert(findEvenIndex([1,2,3,4,3,2,1]) === 3, 'Где-то ошибка')
+console.assert(findEvenIndex([1,2,3,4,5,6]) === -1, 'Где-то ошибка')
+
+// Напишите функцию, которая преобразует входную строку в верхний регистр.
+
+function makeUpperCase(str) {
+  return str.toUpperCase()
+}
+console.assert(makeUpperCase('hello') === 'HELLO', 'Где то ошибка')
+
+// Напишите функцию, которая вычисляет среднее значение чисел в заданном массиве.
+
+// Примечание: пустые массивы должны возвращать 0.
+
+function findAverage(array) {
+    if(array.length !== 0){
+  const sum = array.reduce((acc, num) => acc + num)
+  return sum / array.length;
+  }
+  return 0
+}
+console.assert(findAverage([1,2,3]) === 2, 'Где то ошибка1')
+console.assert(findAverage([]) === 0, 'Где то ошибка2')
+
+// В этом ката речь идет об умножении заданного числа на восемь,
+//  если это четное число, и на девять в противном случае.
+
+function simpleMultiplication(number) {
+    return number % 2 === 0 ? number * 8 : number * 9
+}
+console.assert(simpleMultiplication(2) === 16, 'Где то ошибка1')
+console.assert(simpleMultiplication(3) === 27, 'Где то ошибка2')
+console.assert(simpleMultiplication(0) === 0, 'Где то ошибка3')
+console.assert(simpleMultiplication(-2) === -16, 'Где то ошибка4')
+console.assert(simpleMultiplication(-5) === -45, 'Где то ошибка5')
+
+function accum(s) {
+	const arrLetter = s.split('')
+    for(let i = 1; i < arrLetter.length; i++){
+        arrLetter[0] = arrLetter[0].toUpperCase()
+        arrLetter[i] = arrLetter[i].charAt(0).toUpperCase() + arrLetter[i].toLowerCase().repeat(i)
+    }
+    return arrLetter.join('-')
+}
+console.assert(accum("ZpglnRxqenU") === "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu", 'Где то ошибка')
+console.assert(accum("NyffsGeyylB") === "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb", 'Где то ошибка')
+
+// Определите, какой сегодня порядковый день в году.
+
+function toDayOfYear(arr) {
+    let dayOfMonth = []
+  if(arr[2] % 4 === 0 && arr[2] % 100 !== 0 ||arr[2] % 400 === 0){
+    dayOfMonth = [31,29,31,30,31,30,31,31,30,31,30,31]
+    }
+
+else {dayOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31]}
+let curDay = 0
+if(arr[1] > 1){
+    dayOfMonth.length = arr[1] - 1
+curDay = dayOfMonth.reduce((acc, num) => acc + num) + arr[0]
+}
+else{curDay = curDay + arr[0]}
+return curDay
+}
+console.log(toDayOfYear([5, 1, 2017]))
+console.assert(toDayOfYear([25, 12, 2017]) === 359, 'Где то ошибка1')
+console.assert(toDayOfYear([31, 12, 2000]) === 366, 'Где то ошибка2')
+console.assert(toDayOfYear([1, 5, 3000]) === 121, 'Где то ошибка2')
+console.assert(toDayOfYear([14, 3, 1066]) === 73, 'Где то ошибка2')
+console.assert(toDayOfYear([5, 11, 1604]) === 310, 'Где то ошибка2')
+console.assert(toDayOfYear([31, 12, 2001]) === 365, 'Где то ошибка2')
+console.assert(toDayOfYear([31, 12, 2004]) === 366, 'Где то ошибка2')
+
+// Напишите функцию, которая принимает массив чисел (целые числа для тестов) и целевое число. Она должна найти два разных элемента в массиве, которые при сложении дают целевое значение. Индексы этих элементов затем 
+// должны быть возвращены в кортеже/списке (в зависимости от вашего языка) следующим образом: (index1, index2).
+
+function twoSum(numbers, target) {
+    const res = []
+   for(let i = 0; i < numbers.length - 1; i++){
+    for(let j = i + 1; j < numbers.length; j++){
+        if(numbers[i] + numbers[j] === target){
+            res.push(i, j)
+        }
+    }
+    
+   }
+   return res
+}
+console.log(twoSum([1234, 5678, 9012], 14690))
+// console.assert(twoSum([1, 2, 3], 4) === 3, 'ошибка1')
