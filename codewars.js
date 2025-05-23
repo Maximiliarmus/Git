@@ -1592,3 +1592,69 @@ function twoSum(numbers, target) {
 }
 console.log(twoSum([1234, 5678, 9012], 14690))
 // console.assert(twoSum([1, 2, 3], 4) === 3, 'ошибка1')
+
+// Банкоматы допускают использование 4- или 6-значных PIN-кодов,
+//  которые не могут содержать ничего, кроме 4 или 6 цифр.
+
+// Если функции передана допустимая строка PIN-кода, вернуть true, в противном случае вернуть false.
+
+function validatePIN (pin) {
+  
+  return /^\d{4}$|^\d{6}$/.test(pin)
+}
+console.log(validatePIN("1234"))
+
+// Вам дан массив(список) strarrстрок и целое число k. Ваша задача —
+//  вернуть первую самую длинную строку, состоящую из k последовательных строк, взятых в массиве.
+
+function longestConsec(strarr, k) {
+    const topLength = [...strarr].sort((a,b) => b.length - a.length).slice(0, k)
+    if(k <= strarr.length && k > 0){
+    return strarr.filter(str => topLength.includes(str)).join("")
+    }
+    return ""
+
+}
+console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 3))
+
+// Завершите функцию, которая принимает в качестве входных данных неотрицательное целое число n и возвращает 
+// список всех степеней числа 2 с показателем степени от 0 до n(включительно).
+
+function powersOfTwo(n){
+  const res = []
+  for(let i = 0; i <= n; i++){
+    let pow = Math.pow(2, i)
+    res.push(pow)
+  }
+    return res
+}
+console.log(powersOfTwo(0))
+
+// Напишите функцию feast, которая принимает имя животного и блюдо 
+// в качестве аргументов и возвращает значение true или false, указывающее, разрешено ли животному принести блюдо на пир.
+
+function feast(beast, dish) {
+return beast.at(0) === dish.at(0) && beast.at(-1) === dish.at(-1) ? true :false
+}
+console.log(feast("brown bear", "bear claw"))
+
+// Возьмите массив и удалите каждый второй элемент из массива. Всегда сохраняйте первый элемент и начинайте удаление со следующего элемента.
+
+function removeEveryOther(arr){
+  
+  return arr.filter((_, index) => index % 2 === 0)
+   
+}
+console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']))
+
+// Возвращает количество гласных в заданной строке.
+
+// Мы будем считать a, e, i, o, uгласными для этого Ката (но не y).
+
+// Входная строка будет состоять только из строчных букв и/или пробелов.
+
+function getCount(str) {
+  const vowels = str.replace(/[aeiou]/g, '')
+    return str.length - vowels.length;
+}
+console.log(getCount('abracadabra'))
