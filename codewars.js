@@ -1658,3 +1658,118 @@ function getCount(str) {
     return str.length - vowels.length;
 }
 console.log(getCount('abracadabra'))
+
+// Суммировать все числа заданного массива (cq. list), за исключением самого высокого и самого низкого элемента (по значению, а не по индексу!).
+
+function sumArray(array) {
+    if(Array.isArray(array) && array.length !== 0){
+const res = array.sort((a,b) => a - b)
+res.pop()
+res.shift()
+if(res.length > 0){
+return res.reduce((acc, num) => acc + num)
+}
+}
+return 0
+}
+console.log(sumArray([ 6, 2, 1, 8, 10 ]))
+
+// Вам дан массив целых чисел нечетной длины , в котором все числа одинаковы, за исключением одного числа.
+
+// Завершите метод, который принимает такой массив и возвращает это единственное отличающееся число.
+
+// Входной массив всегда будет действителен! (нечетная длина >= 3)
+
+function stray(numbers) {
+  const map = new Map()
+  for(let i = 0; i < numbers.length; i++){
+    if(map.has(numbers[i])){
+        let curNum = map.get(numbers[i])
+        map.set(numbers[i],curNum + 1)
+    }
+    else{map.set(numbers[i], 1)}
+  }
+  for([key, value] of map){
+    if(value === 1){return key}
+  }
+}
+console.log(stray([1, 2, 1]))
+
+// Ваша задача — написать функцию, которая увеличивает строку, чтобы создать новую строку.
+
+// Если строка уже заканчивается цифрой, то число следует увеличить на 1.
+// Если строка не заканчивается цифрой, к новой строке следует добавить цифру 1.
+
+function incrementString (string) {
+  const hasDigits = /\d/.test(string)
+  if(!hasDigits){return string + '1'}
+  const match = string.match(/(\d+)$/);
+  if(match){
+    const numberStr = match[1]
+    const numberLength = numberStr.length
+    const res = (parseInt(numberStr, 10) + 1).toString();
+    const padded = res.padStart(numberLength, '0');
+    return string.replace(/(\d+)$/, padded)
+  }
+  
+  }
+
+console.log(incrementString("foobar000"))
+
+// Возьмите 2 строки s1и , s2 включающие только буквы от a до z. Верните новую отсортированную строку (в алфавитном порядке возрастания), 
+// максимально длинную, содержащую различные буквы - каждая взята только один раз - из s1 или s2.
+
+function longest(s1, s2) {
+  const setA = new Set([...s1])
+  const setB = new Set([...s2])
+  const res = new Set([...setA, ...setB])
+  return Array.from(res).sort().join('')
+}
+console.log(longest("loopingisfunbutdangerous", "lessdangerousthancoding"))
+
+// Напишите функцию, которая будет возвращать количество различных нечувствительных к регистру буквенных символов и числовых цифр, 
+// которые встречаются более одного раза во входной строке. 
+// Можно предположить, что входная строка содержит только буквы алфавита (как заглавные, так и строчные) и числовые цифры.
+
+function duplicateCount(text){
+  const text2 = text.toLowerCase()
+  const map = new Map()
+  for(let i = 0; i < text2.length; i++){
+    if(map.has(text2[i])){
+        let curLetter = map.get(text2[i])
+        map.set(text2[i], curLetter + 1)
+    }
+    else{map.set(text2[i], 1)}
+  }
+  let counter = 0
+  for([key,value] of map){
+    if(value > 1){counter ++}
+  }
+  return counter
+}
+console.log(duplicateCount("aA11"))
+
+// Вы получаете массив с результатами тестов ваших однокурсников. Теперь посчитайте средний балл и сравните свой!
+
+// Возвращайтесь, trueесли вам станет лучше, иначе false!
+
+function betterThanAverage(classPoints, yourPoints) {
+  const sumClassPoints = classPoints.reduce((acc, num) => acc + num)
+  let avgClassPoints = sumClassPoints / classPoints.length
+  return yourPoints > avgClassPoints
+}
+console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75))
+
+// Ваша задача — написать функцию, которая возвращает сумму последовательности целых чисел.
+
+// Последовательность определяется тремя неотрицательными значениями: начало , конец , шаг .
+
+const sequenceSum = (begin, end, step) => {
+  const arr = []
+  if(begin > end){return 0}
+  for(let i = begin; i <= end; i += step){
+    arr.push(i)
+  }
+  return arr.reduce((acc, num) => acc + num)
+};
+console.log(sequenceSum(1, 5, 3))
