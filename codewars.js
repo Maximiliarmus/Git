@@ -1773,3 +1773,51 @@ const sequenceSum = (begin, end, step) => {
   return arr.reduce((acc, num) => acc + num)
 };
 console.log(sequenceSum(1, 5, 3))
+
+// Ваша задача — преобразовать строки в то, как их написал бы Джейден Смит. 
+// Строки — это настоящие цитаты Джейдена Смита, но они не написаны заглавными буквами так, как он изначально их набирал.
+
+Object.defineProperty(
+  String.prototype,
+  'toJadenCase',
+  { value :
+   function toJadenCase() {
+     return this
+     .split(" ")
+     .map(word => word.toUpperCase().charAt(0) + word.slice(1))
+     .join(" ")   
+     
+   }
+  }
+);
+console.log("How can mirrors be real if our eyes aren't real".toJadenCase())
+
+// Если в качестве входных данных задано целое число, 
+// можно ли округлить его до ближайшего (то есть «больше или равно») кратного 5 числа?
+
+function roundToNext5(n){
+  return Math.ceil(n / 5) * 5 + 0
+}
+console.log(roundToNext5(-2))
+
+// Вам нужно вернуть строку, которая выглядит как ромбовидная форма при печати на экране, используя *символы звездочки ( ). 
+// Конечные пробелы должны быть удалены, и каждая строка должна заканчиваться символом новой строки ( \n).
+
+function diamond(n){
+  if(n % 2 !== 0 && n > 0){
+  let star = "*"
+  let space = " "
+  let res = ''
+  for(let i = 1; i <= n; i+=2){
+    let spaceRep = (n - i) / 2
+    res += space.repeat(spaceRep) + star.repeat(i) +'\n'
+}
+for(let i = n - 2; i >= 1; i -=2){
+    let spaceRep = (n - i) / 2
+    res += space.repeat(spaceRep) + star.repeat(i) +'\n'
+}
+return res
+  }
+    return null;
+}
+console.log(diamond(3))
