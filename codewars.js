@@ -1285,7 +1285,7 @@ function updateLight(current) {
 
 //   На этот раз мы хотим написать вычисления с использованием функций и получить результаты. 
 //   Давайте рассмотрим несколько примеров:
-const  dividedBy = (number) => {
+const dividedBy = (number) => {
     const operator = '/'
     if (number !== 0) {
         return {
@@ -1419,13 +1419,13 @@ const zero = (result) => {
     if (result?.operator) {
         return eval(`${number} ${result.operator} ${result.number}`)
     }
-    else {throw new Error('Делить на 0 нельзя')} 
+    else { throw new Error('Делить на 0 нельзя') }
 }
 
-try{
+try {
     console.log(one(dividedBy(zero())))
 }
-catch(e){
+catch (e) {
     console.error(e.message)
 }
 // console.log(one(dividedBy(zero())))
@@ -1490,25 +1490,24 @@ console.log(arrayDiff([1, 2, 2], [1]))
 
 // Если индекса, который бы это сделал, нет, верните -1.
 
-function findEvenIndex(arr)
-{
-  const sum = arr.reduce((acc, num) => acc + num)
-  let runSum = 0;
-  for(let i = 0; i < arr.length; i++){
-    const isRightSum = (sum - arr[i]) / 2 === runSum
-    runSum += arr[i]
-    if(isRightSum){return i}
-    
-  }
-  return -1
+function findEvenIndex(arr) {
+    const sum = arr.reduce((acc, num) => acc + num)
+    let runSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        const isRightSum = (sum - arr[i]) / 2 === runSum
+        runSum += arr[i]
+        if (isRightSum) { return i }
+
+    }
+    return -1
 }
-console.assert(findEvenIndex([1,2,3,4,3,2,1]) === 3, 'Где-то ошибка')
-console.assert(findEvenIndex([1,2,3,4,5,6]) === -1, 'Где-то ошибка')
+console.assert(findEvenIndex([1, 2, 3, 4, 3, 2, 1]) === 3, 'Где-то ошибка')
+console.assert(findEvenIndex([1, 2, 3, 4, 5, 6]) === -1, 'Где-то ошибка')
 
 // Напишите функцию, которая преобразует входную строку в верхний регистр.
 
 function makeUpperCase(str) {
-  return str.toUpperCase()
+    return str.toUpperCase()
 }
 console.assert(makeUpperCase('hello') === 'HELLO', 'Где то ошибка')
 
@@ -1517,13 +1516,13 @@ console.assert(makeUpperCase('hello') === 'HELLO', 'Где то ошибка')
 // Примечание: пустые массивы должны возвращать 0.
 
 function findAverage(array) {
-    if(array.length !== 0){
-  const sum = array.reduce((acc, num) => acc + num)
-  return sum / array.length;
-  }
-  return 0
+    if (array.length !== 0) {
+        const sum = array.reduce((acc, num) => acc + num)
+        return sum / array.length;
+    }
+    return 0
 }
-console.assert(findAverage([1,2,3]) === 2, 'Где то ошибка1')
+console.assert(findAverage([1, 2, 3]) === 2, 'Где то ошибка1')
 console.assert(findAverage([]) === 0, 'Где то ошибка2')
 
 // В этом ката речь идет об умножении заданного числа на восемь,
@@ -1539,8 +1538,8 @@ console.assert(simpleMultiplication(-2) === -16, 'Где то ошибка4')
 console.assert(simpleMultiplication(-5) === -45, 'Где то ошибка5')
 
 function accum(s) {
-	const arrLetter = s.split('')
-    for(let i = 1; i < arrLetter.length; i++){
+    const arrLetter = s.split('')
+    for (let i = 1; i < arrLetter.length; i++) {
         arrLetter[0] = arrLetter[0].toUpperCase()
         arrLetter[i] = arrLetter[i].charAt(0).toUpperCase() + arrLetter[i].toLowerCase().repeat(i)
     }
@@ -1553,18 +1552,18 @@ console.assert(accum("NyffsGeyylB") === "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyy
 
 function toDayOfYear(arr) {
     let dayOfMonth = []
-  if(arr[2] % 4 === 0 && arr[2] % 100 !== 0 ||arr[2] % 400 === 0){
-    dayOfMonth = [31,29,31,30,31,30,31,31,30,31,30,31]
+    if (arr[2] % 4 === 0 && arr[2] % 100 !== 0 || arr[2] % 400 === 0) {
+        dayOfMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     }
 
-else {dayOfMonth = [31,28,31,30,31,30,31,31,30,31,30,31]}
-let curDay = 0
-if(arr[1] > 1){
-    dayOfMonth.length = arr[1] - 1
-curDay = dayOfMonth.reduce((acc, num) => acc + num) + arr[0]
-}
-else{curDay = curDay + arr[0]}
-return curDay
+    else { dayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] }
+    let curDay = 0
+    if (arr[1] > 1) {
+        dayOfMonth.length = arr[1] - 1
+        curDay = dayOfMonth.reduce((acc, num) => acc + num) + arr[0]
+    }
+    else { curDay = curDay + arr[0] }
+    return curDay
 }
 console.log(toDayOfYear([5, 1, 2017]))
 console.assert(toDayOfYear([25, 12, 2017]) === 359, 'Где то ошибка1')
@@ -1580,15 +1579,15 @@ console.assert(toDayOfYear([31, 12, 2004]) === 366, 'Где то ошибка2')
 
 function twoSum(numbers, target) {
     const res = []
-   for(let i = 0; i < numbers.length - 1; i++){
-    for(let j = i + 1; j < numbers.length; j++){
-        if(numbers[i] + numbers[j] === target){
-            res.push(i, j)
+    for (let i = 0; i < numbers.length - 1; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            if (numbers[i] + numbers[j] === target) {
+                res.push(i, j)
+            }
         }
+
     }
-    
-   }
-   return res
+    return res
 }
 console.log(twoSum([1234, 5678, 9012], 14690))
 // console.assert(twoSum([1, 2, 3], 4) === 3, 'ошибка1')
@@ -1598,9 +1597,9 @@ console.log(twoSum([1234, 5678, 9012], 14690))
 
 // Если функции передана допустимая строка PIN-кода, вернуть true, в противном случае вернуть false.
 
-function validatePIN (pin) {
-  
-  return /^\d{4}$|^\d{6}$/.test(pin)
+function validatePIN(pin) {
+
+    return /^\d{4}$|^\d{6}$/.test(pin)
 }
 console.log(validatePIN("1234"))
 
@@ -1608,24 +1607,24 @@ console.log(validatePIN("1234"))
 //  вернуть первую самую длинную строку, состоящую из k последовательных строк, взятых в массиве.
 
 function longestConsec(strarr, k) {
-    const topLength = [...strarr].sort((a,b) => b.length - a.length).slice(0, k)
-    if(k <= strarr.length && k > 0){
-    return strarr.filter(str => topLength.includes(str)).join("")
+    const topLength = [...strarr].sort((a, b) => b.length - a.length).slice(0, k)
+    if (k <= strarr.length && k > 0) {
+        return strarr.filter(str => topLength.includes(str)).join("")
     }
     return ""
 
 }
-console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 3))
+console.log(longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 3))
 
 // Завершите функцию, которая принимает в качестве входных данных неотрицательное целое число n и возвращает 
 // список всех степеней числа 2 с показателем степени от 0 до n(включительно).
 
-function powersOfTwo(n){
-  const res = []
-  for(let i = 0; i <= n; i++){
-    let pow = Math.pow(2, i)
-    res.push(pow)
-  }
+function powersOfTwo(n) {
+    const res = []
+    for (let i = 0; i <= n; i++) {
+        let pow = Math.pow(2, i)
+        res.push(pow)
+    }
     return res
 }
 console.log(powersOfTwo(0))
@@ -1634,16 +1633,16 @@ console.log(powersOfTwo(0))
 // в качестве аргументов и возвращает значение true или false, указывающее, разрешено ли животному принести блюдо на пир.
 
 function feast(beast, dish) {
-return beast.at(0) === dish.at(0) && beast.at(-1) === dish.at(-1) ? true :false
+    return beast.at(0) === dish.at(0) && beast.at(-1) === dish.at(-1) ? true : false
 }
 console.log(feast("brown bear", "bear claw"))
 
 // Возьмите массив и удалите каждый второй элемент из массива. Всегда сохраняйте первый элемент и начинайте удаление со следующего элемента.
 
-function removeEveryOther(arr){
-  
-  return arr.filter((_, index) => index % 2 === 0)
-   
+function removeEveryOther(arr) {
+
+    return arr.filter((_, index) => index % 2 === 0)
+
 }
 console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']))
 
@@ -1654,7 +1653,7 @@ console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']))
 // Входная строка будет состоять только из строчных букв и/или пробелов.
 
 function getCount(str) {
-  const vowels = str.replace(/[aeiou]/g, '')
+    const vowels = str.replace(/[aeiou]/g, '')
     return str.length - vowels.length;
 }
 console.log(getCount('abracadabra'))
@@ -1662,17 +1661,17 @@ console.log(getCount('abracadabra'))
 // Суммировать все числа заданного массива (cq. list), за исключением самого высокого и самого низкого элемента (по значению, а не по индексу!).
 
 function sumArray(array) {
-    if(Array.isArray(array) && array.length !== 0){
-const res = array.sort((a,b) => a - b)
-res.pop()
-res.shift()
-if(res.length > 0){
-return res.reduce((acc, num) => acc + num)
+    if (Array.isArray(array) && array.length !== 0) {
+        const res = array.sort((a, b) => a - b)
+        res.pop()
+        res.shift()
+        if (res.length > 0) {
+            return res.reduce((acc, num) => acc + num)
+        }
+    }
+    return 0
 }
-}
-return 0
-}
-console.log(sumArray([ 6, 2, 1, 8, 10 ]))
+console.log(sumArray([6, 2, 1, 8, 10]))
 
 // Вам дан массив целых чисел нечетной длины , в котором все числа одинаковы, за исключением одного числа.
 
@@ -1681,17 +1680,17 @@ console.log(sumArray([ 6, 2, 1, 8, 10 ]))
 // Входной массив всегда будет действителен! (нечетная длина >= 3)
 
 function stray(numbers) {
-  const map = new Map()
-  for(let i = 0; i < numbers.length; i++){
-    if(map.has(numbers[i])){
-        let curNum = map.get(numbers[i])
-        map.set(numbers[i],curNum + 1)
+    const map = new Map()
+    for (let i = 0; i < numbers.length; i++) {
+        if (map.has(numbers[i])) {
+            let curNum = map.get(numbers[i])
+            map.set(numbers[i], curNum + 1)
+        }
+        else { map.set(numbers[i], 1) }
     }
-    else{map.set(numbers[i], 1)}
-  }
-  for([key, value] of map){
-    if(value === 1){return key}
-  }
+    for ([key, value] of map) {
+        if (value === 1) { return key }
+    }
 }
 console.log(stray([1, 2, 1]))
 
@@ -1700,19 +1699,19 @@ console.log(stray([1, 2, 1]))
 // Если строка уже заканчивается цифрой, то число следует увеличить на 1.
 // Если строка не заканчивается цифрой, к новой строке следует добавить цифру 1.
 
-function incrementString (string) {
-  const hasDigits = /\d/.test(string)
-  if(!hasDigits){return string + '1'}
-  const match = string.match(/(\d+)$/);
-  if(match){
-    const numberStr = match[1]
-    const numberLength = numberStr.length
-    const res = (parseInt(numberStr, 10) + 1).toString();
-    const padded = res.padStart(numberLength, '0');
-    return string.replace(/(\d+)$/, padded)
-  }
-  
-  }
+function incrementString(string) {
+    const hasDigits = /\d/.test(string)
+    if (!hasDigits) { return string + '1' }
+    const match = string.match(/(\d+)$/);
+    if (match) {
+        const numberStr = match[1]
+        const numberLength = numberStr.length
+        const res = (parseInt(numberStr, 10) + 1).toString();
+        const padded = res.padStart(numberLength, '0');
+        return string.replace(/(\d+)$/, padded)
+    }
+
+}
 
 console.log(incrementString("foobar000"))
 
@@ -1720,10 +1719,10 @@ console.log(incrementString("foobar000"))
 // максимально длинную, содержащую различные буквы - каждая взята только один раз - из s1 или s2.
 
 function longest(s1, s2) {
-  const setA = new Set([...s1])
-  const setB = new Set([...s2])
-  const res = new Set([...setA, ...setB])
-  return Array.from(res).sort().join('')
+    const setA = new Set([...s1])
+    const setB = new Set([...s2])
+    const res = new Set([...setA, ...setB])
+    return Array.from(res).sort().join('')
 }
 console.log(longest("loopingisfunbutdangerous", "lessdangerousthancoding"))
 
@@ -1731,21 +1730,21 @@ console.log(longest("loopingisfunbutdangerous", "lessdangerousthancoding"))
 // которые встречаются более одного раза во входной строке. 
 // Можно предположить, что входная строка содержит только буквы алфавита (как заглавные, так и строчные) и числовые цифры.
 
-function duplicateCount(text){
-  const text2 = text.toLowerCase()
-  const map = new Map()
-  for(let i = 0; i < text2.length; i++){
-    if(map.has(text2[i])){
-        let curLetter = map.get(text2[i])
-        map.set(text2[i], curLetter + 1)
+function duplicateCount(text) {
+    const text2 = text.toLowerCase()
+    const map = new Map()
+    for (let i = 0; i < text2.length; i++) {
+        if (map.has(text2[i])) {
+            let curLetter = map.get(text2[i])
+            map.set(text2[i], curLetter + 1)
+        }
+        else { map.set(text2[i], 1) }
     }
-    else{map.set(text2[i], 1)}
-  }
-  let counter = 0
-  for([key,value] of map){
-    if(value > 1){counter ++}
-  }
-  return counter
+    let counter = 0
+    for ([key, value] of map) {
+        if (value > 1) { counter++ }
+    }
+    return counter
 }
 console.log(duplicateCount("aA11"))
 
@@ -1754,9 +1753,9 @@ console.log(duplicateCount("aA11"))
 // Возвращайтесь, trueесли вам станет лучше, иначе false!
 
 function betterThanAverage(classPoints, yourPoints) {
-  const sumClassPoints = classPoints.reduce((acc, num) => acc + num)
-  let avgClassPoints = sumClassPoints / classPoints.length
-  return yourPoints > avgClassPoints
+    const sumClassPoints = classPoints.reduce((acc, num) => acc + num)
+    let avgClassPoints = sumClassPoints / classPoints.length
+    return yourPoints > avgClassPoints
 }
 console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75))
 
@@ -1765,12 +1764,12 @@ console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75))
 // Последовательность определяется тремя неотрицательными значениями: начало , конец , шаг .
 
 const sequenceSum = (begin, end, step) => {
-  const arr = []
-  if(begin > end){return 0}
-  for(let i = begin; i <= end; i += step){
-    arr.push(i)
-  }
-  return arr.reduce((acc, num) => acc + num)
+    const arr = []
+    if (begin > end) { return 0 }
+    for (let i = begin; i <= end; i += step) {
+        arr.push(i)
+    }
+    return arr.reduce((acc, num) => acc + num)
 };
 console.log(sequenceSum(1, 5, 3))
 
@@ -1778,46 +1777,189 @@ console.log(sequenceSum(1, 5, 3))
 // Строки — это настоящие цитаты Джейдена Смита, но они не написаны заглавными буквами так, как он изначально их набирал.
 
 Object.defineProperty(
-  String.prototype,
-  'toJadenCase',
-  { value :
-   function toJadenCase() {
-     return this
-     .split(" ")
-     .map(word => word.toUpperCase().charAt(0) + word.slice(1))
-     .join(" ")   
-     
-   }
-  }
+    String.prototype,
+    'toJadenCase',
+    {
+        value:
+            function toJadenCase() {
+                return this
+                    .split(" ")
+                    .map(word => word.toUpperCase().charAt(0) + word.slice(1))
+                    .join(" ")
+
+            }
+    }
 );
 console.log("How can mirrors be real if our eyes aren't real".toJadenCase())
 
 // Если в качестве входных данных задано целое число, 
 // можно ли округлить его до ближайшего (то есть «больше или равно») кратного 5 числа?
 
-function roundToNext5(n){
-  return Math.ceil(n / 5) * 5 + 0
+function roundToNext5(n) {
+    return Math.ceil(n / 5) * 5 + 0
 }
 console.log(roundToNext5(-2))
 
 // Вам нужно вернуть строку, которая выглядит как ромбовидная форма при печати на экране, используя *символы звездочки ( ). 
 // Конечные пробелы должны быть удалены, и каждая строка должна заканчиваться символом новой строки ( \n).
 
-function diamond(n){
-  if(n % 2 !== 0 && n > 0){
-  let star = "*"
-  let space = " "
-  let res = ''
-  for(let i = 1; i <= n; i+=2){
-    let spaceRep = (n - i) / 2
-    res += space.repeat(spaceRep) + star.repeat(i) +'\n'
-}
-for(let i = n - 2; i >= 1; i -=2){
-    let spaceRep = (n - i) / 2
-    res += space.repeat(spaceRep) + star.repeat(i) +'\n'
-}
-return res
-  }
+function diamond(n) {
+    if (n % 2 !== 0 && n > 0) {
+        let star = "*"
+        let space = " "
+        let res = ''
+        for (let i = 1; i <= n; i += 2) {
+            let spaceRep = (n - i) / 2
+            res += space.repeat(spaceRep) + star.repeat(i) + '\n'
+        }
+        for (let i = n - 2; i >= 1; i -= 2) {
+            let spaceRep = (n - i) / 2
+            res += space.repeat(spaceRep) + star.repeat(i) + '\n'
+        }
+        return res
+    }
     return null;
 }
 console.log(diamond(3))
+
+// Создайте функцию, которая возвращает значение, умноженное на 50 и увеличенное на 6. 
+// Если введенное значение является строкой, она должна вернуть «Ошибка».
+
+function problem(x) {
+    if (typeof x === "string") { return "Error" }
+    return x * 50 + 6
+}
+console.log(problem('fd'))
+
+// Создайте функцию, которая возвращает имя победителя в поединке между двумя бойцами.
+
+// Каждый боец ​​по очереди атакует другого, и тот, кто убьет другого первым, побеждает. Смерть определяется как наличие health <= 0.
+
+function Fighter(name, health, damagePerAttack) {
+    this.name = name;
+    this.health = health;
+    this.damagePerAttack = damagePerAttack;
+    this.toString = function () { return this.name; }
+}
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+    let attacker = fighter1.name === firstAttacker ? fighter1 : fighter2
+    let defender = attacker === fighter1 ? fighter2 : fighter1
+
+    while (fighter1.health > 0 && fighter1.health > 0) {
+        defender.health -= attacker.damagePerAttack
+        if (defender.health <= 0) break;
+        [attacker, defender] = [defender, attacker];
+    }
+    return attacker.name;
+}
+console.log(declareWinner(new Fighter("Lew", 5, 2), new Fighter("Harry", 5, 4), "Lew"))
+
+// В рамках этого ката вам необходимо создать функцию, 
+// которая при наличии триплета возвращает индекс числового элемента, который находится между двумя другими элементами.
+
+function gimme(triplet) {
+    const res = [...triplet]
+    const sorted = res.sort((a, b) => a - b)
+    const middle = sorted[1]
+    return triplet.indexOf(middle)
+}
+console.log(gimme([2, 3, 1]))
+
+// Ваша задача — завершить предложенный метод и вернуть количество лет «Y» в целом, чтобы мистер Скрудж получил желаемую сумму.
+
+function calculateYears(principal, interest, tax, desired) {
+    let years = 0
+    if (principal === desired) { return 0 }
+    while (desired > principal) {
+        let marj = principal * interest
+        let taxed = marj * tax
+        principal += marj - taxed
+        years++
+        if (desired <= principal) break;
+    }
+    return years
+}
+console.log(calculateYears(1000, 0.05, 0.18, 1100))
+
+// Дан массив /список [] целых чисел . 
+// Постройте массив произведений того же размера, такой, что prod[i] равен произведению всех элементов Arr[], кроме Arr[i] .
+
+function productArray(numbers) {
+    const res = []
+    for (let i = 0; i < numbers.length; i++) {
+        const multiply = numbers.reduce((acc, num) => acc * num)
+        const elRes = multiply / numbers[i]
+        res.push(elRes)
+    }
+    return res
+}
+console.log(productArray([12, 20]))
+console.assert(JSON.stringify(productArray([12, 20])) === JSON.stringify([20, 12]), 'ошибка1')
+console.assert(JSON.stringify(productArray([3, 27, 4, 2])) === JSON.stringify([216, 24, 162, 324]), 'ошибка2')
+console.assert(JSON.stringify(productArray([13, 10, 5, 2, 9])) === JSON.stringify([900, 1170, 2340, 5850, 1300]), 'ошибка3')
+console.assert(JSON.stringify(productArray([16, 17, 4, 3, 5, 2])) === JSON.stringify([2040, 1920, 8160, 10880, 6528, 16320]), 'ошибка4')
+
+// Ваша задача — отсортировать заданную строку. Каждое слово в строке будет содержать одно число. 
+// Это число — позиция, которую слово должно занимать в результате.
+
+function order(words) {
+    const arrLetter = words.split(" ")
+    const copyArr = [...arrLetter].map(str => str.replace(/\D/g, '')).sort((a, b) => a - b)
+    const res = copyArr.map(elem => arrLetter.find(el => el.includes(elem)))
+    return res.join(' ')
+}
+console.log(order("is2 Thi1s T4est 3a"))
+console.assert(order("is2 Thi1s T4est 3a") === "Thi1s is2 3a T4est", 'ошибка1')
+console.assert(order("4of Fo1r pe6ople g3ood th5e the2") === "Fo1r the2 g3ood 4of th5e pe6ople", 'ошибка2')
+console.assert(order("") === "", 'ошибка3')
+
+// Дополните функцию так, чтобы она находила среднее значение трех переданных ей оценок и возвращала буквенное значение, связанное с этой оценкой.
+function getGrade(s1, s2, s3) {
+    const mark = (s1 + s2 + s3) / 3
+    if (mark >= 90 && mark <= 100) { return 'A' }
+    else if (mark >= 80 && mark <= 90) { return 'B' }
+    else if (mark >= 70 && mark <= 80) { return 'C' }
+    if (mark >= 60 && mark <= 700) { return 'D' }
+    else { return 'F' }
+}
+console.log(getGrade(58,59,60))
+
+// Вам необходимо найти слово с наивысшей оценкой из заданной строки слов.
+
+// Каждая буква слова приносит очки в зависимости от ее положения в алфавите: a = 1, b = 2, c = 3и т. д.
+
+// Например, счет abadбудет 8(1 + 2 + 1 + 4).
+
+// Вам необходимо вернуть слово с наивысшим рейтингом в виде строки.
+
+function high(x){
+const arr = x.split(' ')
+const map = new Map()
+for(let i = 0; i < arr.length; i++){
+    const pos = arr[i].split('').map(str => str.charCodeAt(0) - 96).reduce((acc, num) => acc + num)
+    if(map.has(arr[i])){
+        const curStr = map.get(arr[i])
+        map.set(arr[i], curStr + pos)
+    }
+    else{map.set(arr[i], pos)}
+}
+let maxKey = null
+let maxValue = 0
+for([key, value] of map){
+    if(value > maxValue){
+        maxValue = value;
+        maxKey = key
+    }
+}
+return maxKey
+}
+console.log(high('man i need a taxi up to ubud'))
+console.assert(high('what time are we climbing up the volcano') === 'volcano', 'ошибка1' )
+console.assert(high('take me to semynak') === 'semynak', 'ошибка1' )
+console.assert(high('aa b') === 'aa', 'ошибка2' )
+console.assert(high('aa b') === 'aa', 'ошибка3' )
+console.assert(high('b aa') === 'b', 'ошибка4' )
+console.assert(high('bb d') === 'bb', 'ошибка5' )
+console.assert(high('d bb') === 'd', 'ошибка6' )
+console.assert(high('aaa b') === 'aaa', 'ошибка7' )
