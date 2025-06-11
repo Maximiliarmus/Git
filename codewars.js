@@ -1963,3 +1963,38 @@ console.assert(high('b aa') === 'b', 'ошибка4' )
 console.assert(high('bb d') === 'bb', 'ошибка5' )
 console.assert(high('d bb') === 'd', 'ошибка6' )
 console.assert(high('aaa b') === 'aaa', 'ошибка7' )
+
+// Что, если нам нужно добавить длину слов, разделенных пробелом, в конец того же слова и вернуть ее в виде массива?
+
+function addLength(str) {
+const arr = str.split(" ")
+const res = []
+for(let i = 0; i < arr.length; i++){
+    arr[i] = arr[i] + " " + arr[i].length
+    res.push(arr[i])
+}
+
+return arr
+}
+console.log(addLength("you will win"))
+
+// Дан список целых чисел, определите, является ли сумма его элементов четной или нечетной.
+
+// Дайте ответ в виде строки, соответствующей "odd"или "even".
+
+function oddOrEven(array) {
+    if(array.length === 0){array.push(0)}
+   const sum = array.reduce((acc, num) => acc + num)
+   if(sum % 2 === 0){return 'even'}
+   return 'odd'
+}
+console.log(oddOrEven([]))
+
+// Напишите функцию, которая принимает число в качестве входных данных и возвращает сумму абсолютных значений каждой из десятичных цифр числа.
+
+function sumDigits(number) {
+const nums = Math.abs(number).toString().split('')
+return nums.map(Number).reduce((acc, num) => acc + num)
+
+}
+console.log(sumDigits(-32))
