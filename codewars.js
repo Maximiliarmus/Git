@@ -1998,3 +1998,42 @@ return nums.map(Number).reduce((acc, num) => acc + num)
 
 }
 console.log(sumDigits(-32))
+
+// Создайте функцию, которая получает (квадратную) матрицу и вычисляет сумму обеих диагоналей (главной и побочной)
+
+function sum(matrix) {
+    if(matrix.length === 0){return 0}
+    const sumArr = []
+    for(let i = 0; i < matrix.length; i++){
+        sumArr.push(matrix[i][i])
+        let secondEl = matrix[i].length - i - 1
+        sumArr.push(matrix[i][secondEl])
+    }
+  return sumArr.reduce((acc, num) => acc + num);
+}
+console.log(sum([[-2,5,3,2],[9,-6,5,1],[3,2,7,3],[-1,8,-4,8]]))
+console.assert(sum([[-2,5,3,2],[9,-6,5,1],[3,2,7,3],[-1,8,-4,8]]) === 15, 'ошибка 1')
+console.assert(sum([[4]]) === 8, 'ошибка 2')
+console.assert(sum([[1,2], [3,4]]) === 10, 'ошибка 3')
+console.assert(sum([[1,2,3], [4,5,6], [7,8,9]]) === 30, 'ошибка 4')
+console.assert(sum([]) === 0, 'ошибка 5')
+
+// В этом ката вы напишете арифметический список, который по сути является списком, содержащим последовательные термины в последовательности.
+
+function seqlist(first, c, l) {
+  const res = []
+  let i = first;
+  while(res.length < l){
+    res.push(i)
+    i += c
+  }
+  return res
+}
+console.log(seqlist(100, -7, 10))
+
+console.assert(JSON.stringify(seqlist(0, 1, 20)) === JSON.stringify([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]), 'ошибка1');
+  console.assert(JSON.stringify(seqlist(2, 2, 10)) === JSON.stringify([2,4,6,8,10,12,14,16,18,20]), 'ошибка2');
+  console.assert(JSON.stringify(seqlist(-12, 3, 4)) === JSON.stringify([-12, -9, -6, -3]), 'ошибка3');
+  console.assert(JSON.stringify(seqlist(4, 0, 15)) === JSON.stringify([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]), 'ошибка4');
+  console.assert(JSON.stringify(seqlist(0, -5, 8))  === JSON.stringify([0,-5,-10,-15,-20,-25,-30,-35]), 'ошибка5');
+  console.assert(JSON.stringify(seqlist(100, -7, 10)) === JSON.stringify([100, 93, 86, 79, 72, 65, 58, 51, 44, 37]), 'ошибка6');
