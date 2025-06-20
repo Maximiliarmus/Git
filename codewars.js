@@ -2037,3 +2037,73 @@ console.assert(JSON.stringify(seqlist(0, 1, 20)) === JSON.stringify([0,1,2,3,4,5
   console.assert(JSON.stringify(seqlist(4, 0, 15)) === JSON.stringify([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]), 'ошибка4');
   console.assert(JSON.stringify(seqlist(0, -5, 8))  === JSON.stringify([0,-5,-10,-15,-20,-25,-30,-35]), 'ошибка5');
   console.assert(JSON.stringify(seqlist(100, -7, 10)) === JSON.stringify([100, 93, 86, 79, 72, 65, 58, 51, 44, 37]), 'ошибка6');
+
+// Представьте, что вы пытаетесь катить мяч на определенное расстояние по дороге. Мяч будет иметь начальную скорость, 
+// которая медленно уменьшается из-за трения и трещин на дороге. Каждый раз, когда мяч катится на расстояние, равное его скорости, или перекатывается через трещину, его скорость уменьшается на 1. Учитывая скорость s, с которой мяч начинает катиться, 
+// и дорожную карту r улицы, представленную строкой, верните, сможет ли мяч пересечь конец дороги (True или False).
+
+function ballTest(s, r) {
+    const roadArr = r.split('');
+    let crack = 0;
+    let step = 0;
+
+    for (let i = 0; i < roadArr.length; i++) {
+        step++;
+        if (roadArr[i] === "x") crack++;
+
+        if (step === s) {
+            s -= (crack + 1);  // после завершения блока
+            if (s <= 0 && i !== roadArr.length - 1) return false;  // если не успели добежать
+            step = 0;
+            crack = 0;
+        }
+    }
+
+    // остаток (если дорога не кратна s)
+    if (step > 0) {
+        s -= (crack + 1);
+        if (s < 0) return false;
+    }
+
+    return true;
+}
+
+console.log(ballTest(24, "xxxxxxxxxx_____x___xx__xx____________x__________x_"))
+
+// Завершите решение так, чтобы оно возвращало отформатированную строку. 
+// Возвращаемое значение должно быть равно "Value is VALUE", где value — это 5-значное дополненное число.
+
+
+function solution(value){
+  const num = value.toString().padStart(5, '0')
+  return `Value is ${num}`
+}
+console.log(solution(5))
+
+// Учитывая начальные координаты обоих роботов и последовательность команд, 
+// определите, существует ли вероятность столкновения двух роботов в какой-либо момент времени из-за пропущенных команд.
+
+function willRobotsCollide(x1, y1, x2, y2, commands) {
+let posXRob1 = x1
+let posYRob1 = y1
+let posXRob2 = x2
+let posYRob2 = y2
+  const robot1 ={
+    posXRob1,
+    posYRob1
+  }
+  const robot2 ={
+    posXRob2,
+    posYRob2
+  }
+  const left = "L"
+  const right = "R"
+  const up = "U"
+  const down = "D"
+  const comArr = commands.split('')
+  for(let i = 0; i < comArr.length; i++){
+    if(comArr[i] === left)
+  }
+  return comArr
+}
+console.log(willRobotsCollide(0, 0, 1, 0, "UL"))
