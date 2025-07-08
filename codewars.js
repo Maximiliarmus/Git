@@ -1923,7 +1923,7 @@ function getGrade(s1, s2, s3) {
     if (mark >= 60 && mark <= 700) { return 'D' }
     else { return 'F' }
 }
-console.log(getGrade(58,59,60))
+console.log(getGrade(58, 59, 60))
 
 // Вам необходимо найти слово с наивысшей оценкой из заданной строки слов.
 
@@ -1933,48 +1933,48 @@ console.log(getGrade(58,59,60))
 
 // Вам необходимо вернуть слово с наивысшим рейтингом в виде строки.
 
-function high(x){
-const arr = x.split(' ')
-const map = new Map()
-for(let i = 0; i < arr.length; i++){
-    const pos = arr[i].split('').map(str => str.charCodeAt(0) - 96).reduce((acc, num) => acc + num)
-    if(map.has(arr[i])){
-        const curStr = map.get(arr[i])
-        map.set(arr[i], curStr + pos)
+function high(x) {
+    const arr = x.split(' ')
+    const map = new Map()
+    for (let i = 0; i < arr.length; i++) {
+        const pos = arr[i].split('').map(str => str.charCodeAt(0) - 96).reduce((acc, num) => acc + num)
+        if (map.has(arr[i])) {
+            const curStr = map.get(arr[i])
+            map.set(arr[i], curStr + pos)
+        }
+        else { map.set(arr[i], pos) }
     }
-    else{map.set(arr[i], pos)}
-}
-let maxKey = null
-let maxValue = 0
-for([key, value] of map){
-    if(value > maxValue){
-        maxValue = value;
-        maxKey = key
+    let maxKey = null
+    let maxValue = 0
+    for ([key, value] of map) {
+        if (value > maxValue) {
+            maxValue = value;
+            maxKey = key
+        }
     }
-}
-return maxKey
+    return maxKey
 }
 console.log(high('man i need a taxi up to ubud'))
-console.assert(high('what time are we climbing up the volcano') === 'volcano', 'ошибка1' )
-console.assert(high('take me to semynak') === 'semynak', 'ошибка1' )
-console.assert(high('aa b') === 'aa', 'ошибка2' )
-console.assert(high('aa b') === 'aa', 'ошибка3' )
-console.assert(high('b aa') === 'b', 'ошибка4' )
-console.assert(high('bb d') === 'bb', 'ошибка5' )
-console.assert(high('d bb') === 'd', 'ошибка6' )
-console.assert(high('aaa b') === 'aaa', 'ошибка7' )
+console.assert(high('what time are we climbing up the volcano') === 'volcano', 'ошибка1')
+console.assert(high('take me to semynak') === 'semynak', 'ошибка1')
+console.assert(high('aa b') === 'aa', 'ошибка2')
+console.assert(high('aa b') === 'aa', 'ошибка3')
+console.assert(high('b aa') === 'b', 'ошибка4')
+console.assert(high('bb d') === 'bb', 'ошибка5')
+console.assert(high('d bb') === 'd', 'ошибка6')
+console.assert(high('aaa b') === 'aaa', 'ошибка7')
 
 // Что, если нам нужно добавить длину слов, разделенных пробелом, в конец того же слова и вернуть ее в виде массива?
 
 function addLength(str) {
-const arr = str.split(" ")
-const res = []
-for(let i = 0; i < arr.length; i++){
-    arr[i] = arr[i] + " " + arr[i].length
-    res.push(arr[i])
-}
+    const arr = str.split(" ")
+    const res = []
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] + " " + arr[i].length
+        res.push(arr[i])
+    }
 
-return arr
+    return arr
 }
 console.log(addLength("you will win"))
 
@@ -1983,18 +1983,18 @@ console.log(addLength("you will win"))
 // Дайте ответ в виде строки, соответствующей "odd"или "even".
 
 function oddOrEven(array) {
-    if(array.length === 0){array.push(0)}
-   const sum = array.reduce((acc, num) => acc + num)
-   if(sum % 2 === 0){return 'even'}
-   return 'odd'
+    if (array.length === 0) { array.push(0) }
+    const sum = array.reduce((acc, num) => acc + num)
+    if (sum % 2 === 0) { return 'even' }
+    return 'odd'
 }
 console.log(oddOrEven([]))
 
 // Напишите функцию, которая принимает число в качестве входных данных и возвращает сумму абсолютных значений каждой из десятичных цифр числа.
 
 function sumDigits(number) {
-const nums = Math.abs(number).toString().split('')
-return nums.map(Number).reduce((acc, num) => acc + num)
+    const nums = Math.abs(number).toString().split('')
+    return nums.map(Number).reduce((acc, num) => acc + num)
 
 }
 console.log(sumDigits(-32))
@@ -2002,41 +2002,41 @@ console.log(sumDigits(-32))
 // Создайте функцию, которая получает (квадратную) матрицу и вычисляет сумму обеих диагоналей (главной и побочной)
 
 function sum(matrix) {
-    if(matrix.length === 0){return 0}
+    if (matrix.length === 0) { return 0 }
     const sumArr = []
-    for(let i = 0; i < matrix.length; i++){
+    for (let i = 0; i < matrix.length; i++) {
         sumArr.push(matrix[i][i])
         let secondEl = matrix[i].length - i - 1
         sumArr.push(matrix[i][secondEl])
     }
-  return sumArr.reduce((acc, num) => acc + num);
+    return sumArr.reduce((acc, num) => acc + num);
 }
-console.log(sum([[-2,5,3,2],[9,-6,5,1],[3,2,7,3],[-1,8,-4,8]]))
-console.assert(sum([[-2,5,3,2],[9,-6,5,1],[3,2,7,3],[-1,8,-4,8]]) === 15, 'ошибка 1')
+console.log(sum([[-2, 5, 3, 2], [9, -6, 5, 1], [3, 2, 7, 3], [-1, 8, -4, 8]]))
+console.assert(sum([[-2, 5, 3, 2], [9, -6, 5, 1], [3, 2, 7, 3], [-1, 8, -4, 8]]) === 15, 'ошибка 1')
 console.assert(sum([[4]]) === 8, 'ошибка 2')
-console.assert(sum([[1,2], [3,4]]) === 10, 'ошибка 3')
-console.assert(sum([[1,2,3], [4,5,6], [7,8,9]]) === 30, 'ошибка 4')
+console.assert(sum([[1, 2], [3, 4]]) === 10, 'ошибка 3')
+console.assert(sum([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) === 30, 'ошибка 4')
 console.assert(sum([]) === 0, 'ошибка 5')
 
 // В этом ката вы напишете арифметический список, который по сути является списком, содержащим последовательные термины в последовательности.
 
 function seqlist(first, c, l) {
-  const res = []
-  let i = first;
-  while(res.length < l){
-    res.push(i)
-    i += c
-  }
-  return res
+    const res = []
+    let i = first;
+    while (res.length < l) {
+        res.push(i)
+        i += c
+    }
+    return res
 }
 console.log(seqlist(100, -7, 10))
 
-console.assert(JSON.stringify(seqlist(0, 1, 20)) === JSON.stringify([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]), 'ошибка1');
-  console.assert(JSON.stringify(seqlist(2, 2, 10)) === JSON.stringify([2,4,6,8,10,12,14,16,18,20]), 'ошибка2');
-  console.assert(JSON.stringify(seqlist(-12, 3, 4)) === JSON.stringify([-12, -9, -6, -3]), 'ошибка3');
-  console.assert(JSON.stringify(seqlist(4, 0, 15)) === JSON.stringify([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]), 'ошибка4');
-  console.assert(JSON.stringify(seqlist(0, -5, 8))  === JSON.stringify([0,-5,-10,-15,-20,-25,-30,-35]), 'ошибка5');
-  console.assert(JSON.stringify(seqlist(100, -7, 10)) === JSON.stringify([100, 93, 86, 79, 72, 65, 58, 51, 44, 37]), 'ошибка6');
+console.assert(JSON.stringify(seqlist(0, 1, 20)) === JSON.stringify([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]), 'ошибка1');
+console.assert(JSON.stringify(seqlist(2, 2, 10)) === JSON.stringify([2, 4, 6, 8, 10, 12, 14, 16, 18, 20]), 'ошибка2');
+console.assert(JSON.stringify(seqlist(-12, 3, 4)) === JSON.stringify([-12, -9, -6, -3]), 'ошибка3');
+console.assert(JSON.stringify(seqlist(4, 0, 15)) === JSON.stringify([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]), 'ошибка4');
+console.assert(JSON.stringify(seqlist(0, -5, 8)) === JSON.stringify([0, -5, -10, -15, -20, -25, -30, -35]), 'ошибка5');
+console.assert(JSON.stringify(seqlist(100, -7, 10)) === JSON.stringify([100, 93, 86, 79, 72, 65, 58, 51, 44, 37]), 'ошибка6');
 
 // Представьте, что вы пытаетесь катить мяч на определенное расстояние по дороге. Мяч будет иметь начальную скорость, 
 // которая медленно уменьшается из-за трения и трещин на дороге. Каждый раз, когда мяч катится на расстояние, равное его скорости, или перекатывается через трещину, его скорость уменьшается на 1. Учитывая скорость s, с которой мяч начинает катиться, 
@@ -2074,9 +2074,9 @@ console.log(ballTest(24, "xxxxxxxxxx_____x___xx__xx____________x__________x_"))
 // Возвращаемое значение должно быть равно "Value is VALUE", где value — это 5-значное дополненное число.
 
 
-function solution(value){
-  const num = value.toString().padStart(5, '0')
-  return `Value is ${num}`
+function solution(value) {
+    const num = value.toString().padStart(5, '0')
+    return `Value is ${num}`
 }
 console.log(solution(5))
 
@@ -2084,26 +2084,98 @@ console.log(solution(5))
 // определите, существует ли вероятность столкновения двух роботов в какой-либо момент времени из-за пропущенных команд.
 
 function willRobotsCollide(x1, y1, x2, y2, commands) {
-let posXRob1 = x1
-let posYRob1 = y1
-let posXRob2 = x2
-let posYRob2 = y2
-  const robot1 ={
-    posXRob1,
-    posYRob1
-  }
-  const robot2 ={
-    posXRob2,
-    posYRob2
-  }
-  const left = "L"
-  const right = "R"
-  const up = "U"
-  const down = "D"
-  const comArr = commands.split('')
-  for(let i = 0; i < comArr.length; i++){
-    if(comArr[i] === left)
-  }
-  return comArr
+    let posXRob1 = x1
+    let posYRob1 = y1
+    let posXRob2 = x2
+    let posYRob2 = y2
+    const robot1 = {
+        posXRob1,
+        posYRob1
+    }
+    const robot2 = {
+        posXRob2,
+        posYRob2
+    }
+    const left = "L"
+    const right = "R"
+    const up = "U"
+    const down = "D"
+    const comArr = commands.split('')
+    for (let i = 0; i < comArr.length; i++) {
+
+    }
+    return comArr
 }
 console.log(willRobotsCollide(0, 0, 1, 0, "UL"))
+
+// Водительский номер Великобритании состоит из личных данных водителя. Отдельные буквы и цифры могут быть закодированы с использованием приведенной ниже информации. Вам необходимо будет вывести полный 16-значный номер водительского удостоверения ЗАГЛАВНЫМИ БУКВАМИ.
+
+function driver(data) {
+    const res = []
+    let fam1 = data[2].length < 5 ? data[2].padEnd(5, '9') : data[2]
+    let fam2 = fam1.slice(0, 5)
+    res.push(fam2)
+    const year1 = data[3].split('-').pop()
+    const year2 = year1[2]
+    res.push(year2)
+    const month1 = new Date(data[3])
+    const month2 = month1.getMonth() + 1
+    const month3 = month2.toString().padStart(2, '0')
+    const month = data[4] === 'F' ? Number(month3) + 50 : month3
+    res.push(month.toString())
+    const date = data[3].split('-')[0]
+    res.push(date)
+    const numYear = year1[3]
+    res.push(numYear)
+    const letterName = data[0].split('')[0]
+    res.push(letterName)
+    const letterMidName = data[1].length === 0 ? '9' : data[1].split('')[0]
+    res.push(letterMidName)
+    const randomSym = '9AA'
+    res.push(randomSym)
+    return res.join('').toUpperCase()
+}
+console.log(driver(["John", "James", "Smith", "01-Jan-2000", "M"]))
+
+// Завершите функцию возврата, true если два аргумента являются анаграммами друг друга; false в противном случае возвратите значение.
+
+const isAnagram = function(test, original) {
+test = test.toLowerCase().split('').sort().join('')
+original = original.toLowerCase().split('').sort().join('')
+return test === original
+};
+console.log(isAnagram("dumble", "bumble"))
+console.assert(isAnagram("foefet", "toffee") === true, 'Ошибка1')
+console.assert(isAnagram("Buckethead", "DeathCubeK") === true, 'Ошибка2')
+console.assert(isAnagram("Twoo", "WooT") === true, 'Ошибка3')
+console.assert(isAnagram("dumble", "bumble") === false, 'Ошибка4')
+console.assert(isAnagram("ound", "round") === false, 'Ошибка5')
+console.assert(isAnagram("apple", "pale") === false, 'Ошибка6')
+
+// Вам будет дано arrayи limit значение. Вы должны проверить, что все значения в массиве ниже или равны предельному значению. Если это так, верните true. В противном случае верните false.
+
+function smallEnough(a, limit){
+for(let i = 0; i < a.length; i++){
+    if(a[i] > limit){return false}
+}
+return true
+}
+console.log(smallEnough([101, 45, 75, 105, 99, 107], 107))
+
+// Дано: список и число, создайте новый список, содержащий каждое число listне более Nраз, без переупорядочивания.
+// Например, если входное число равно 2, а входной список равен [1,2,3,1,2,1,2,3], вы берете [1,2,3,1,2], отбрасываете следующее, [1,2]так как это приведет к 1и 2нахождению в результате 3раз, а затем берете 3, что приводит к [1,2,3,1,2,3].
+// С помощью списка [20,37,20,21]и числа 1результат будет равен [20,37,21].
+
+function deleteNth(arr,n){
+    const res = [] /*- это массив, куда мы будем складывать отфильтрованные значения (ответ).*/
+  const map = new Map()
+  for(let num of arr){
+    const curNum = map.get(num) || 0 /*- возвращает текущее количество (|| 0 -  если undefined, значит число ещё не встречалось → считаем, что 0)*/
+    if(curNum < n){ /*Проверяем: если число встретилось меньше n раз, то можно добавить его в результат*/
+      res.push(num) - /*Добавляем число в итоговый массив res*/
+      map.set(num, curNum + 1)  /*- Увеличиваем счётчик этого числа в map на 1 — то есть отмечаем, что оно уже ещё раз встретилось*/
+    }
+  }
+  return res
+}
+console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))
