@@ -2179,3 +2179,37 @@ function deleteNth(arr,n){
   return res
 }
 console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))
+
+// Напишите функцию, которая принимает в качестве аргумента одну непустую строку, состоящую только из строчных и заглавных букв ASCII ( word), 
+// и возвращает упорядоченный список, содержащий индексы всех заглавных (верхних) букв в строке.
+
+const capitals = function (word) {
+	const res = []
+    for(let i = 0; i < word.length; i++){
+        if(word[i] === word[i].toUpperCase()){res.push(i)}
+    }
+    return res
+};
+console.log(capitals(''))
+
+
+// В супермаркете есть очередь к кассам самообслуживания. Ваша задача — написать функцию для расчета общего времени, необходимого всем покупателям для оплаты!
+
+// вход
+// клиенты: массив положительных целых чисел, представляющих очередь. Каждое целое число представляет клиента, а его значение — это количество времени, которое требуется им для оформления заказа.
+// n: положительное целое число, количество касс.
+// выход
+// Функция должна возвращать целое число — общее требуемое время.
+
+function queueTime(customers, n) {
+  if(customers.length === 0){return 0}
+  if(customers.length < n){return Math.max(...customers)}
+const tills = Array(n).fill(0)
+for(let i = 0; i < customers.length; i++){
+    let min = Math.min(...tills)
+    let nextTill = tills.indexOf(min)
+    tills[nextTill] += customers[i]
+}
+return Math.max(...tills)
+}
+console.log(queueTime([2,2,3,3,4,4], 2))
