@@ -2139,10 +2139,10 @@ console.log(driver(["John", "James", "Smith", "01-Jan-2000", "M"]))
 
 // Завершите функцию возврата, true если два аргумента являются анаграммами друг друга; false в противном случае возвратите значение.
 
-const isAnagram = function(test, original) {
-test = test.toLowerCase().split('').sort().join('')
-original = original.toLowerCase().split('').sort().join('')
-return test === original
+const isAnagram = function (test, original) {
+    test = test.toLowerCase().split('').sort().join('')
+    original = original.toLowerCase().split('').sort().join('')
+    return test === original
 };
 console.log(isAnagram("dumble", "bumble"))
 console.assert(isAnagram("foefet", "toffee") === true, 'Ошибка1')
@@ -2154,11 +2154,11 @@ console.assert(isAnagram("apple", "pale") === false, 'Ошибка6')
 
 // Вам будет дано arrayи limit значение. Вы должны проверить, что все значения в массиве ниже или равны предельному значению. Если это так, верните true. В противном случае верните false.
 
-function smallEnough(a, limit){
-for(let i = 0; i < a.length; i++){
-    if(a[i] > limit){return false}
-}
-return true
+function smallEnough(a, limit) {
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] > limit) { return false }
+    }
+    return true
 }
 console.log(smallEnough([101, 45, 75, 105, 99, 107], 107))
 
@@ -2166,27 +2166,27 @@ console.log(smallEnough([101, 45, 75, 105, 99, 107], 107))
 // Например, если входное число равно 2, а входной список равен [1,2,3,1,2,1,2,3], вы берете [1,2,3,1,2], отбрасываете следующее, [1,2]так как это приведет к 1и 2нахождению в результате 3раз, а затем берете 3, что приводит к [1,2,3,1,2,3].
 // С помощью списка [20,37,20,21]и числа 1результат будет равен [20,37,21].
 
-function deleteNth(arr,n){
+function deleteNth(arr, n) {
     const res = [] /*- это массив, куда мы будем складывать отфильтрованные значения (ответ).*/
-  const map = new Map()
-  for(let num of arr){
-    const curNum = map.get(num) || 0 /*- возвращает текущее количество (|| 0 -  если undefined, значит число ещё не встречалось → считаем, что 0)*/
-    if(curNum < n){ /*Проверяем: если число встретилось меньше n раз, то можно добавить его в результат*/
-      res.push(num) - /*Добавляем число в итоговый массив res*/
-      map.set(num, curNum + 1)  /*- Увеличиваем счётчик этого числа в map на 1 — то есть отмечаем, что оно уже ещё раз встретилось*/
+    const map = new Map()
+    for (let num of arr) {
+        const curNum = map.get(num) || 0 /*- возвращает текущее количество (|| 0 -  если undefined, значит число ещё не встречалось → считаем, что 0)*/
+        if (curNum < n) { /*Проверяем: если число встретилось меньше n раз, то можно добавить его в результат*/
+            res.push(num) - /*Добавляем число в итоговый массив res*/
+                map.set(num, curNum + 1)  /*- Увеличиваем счётчик этого числа в map на 1 — то есть отмечаем, что оно уже ещё раз встретилось*/
+        }
     }
-  }
-  return res
+    return res
 }
-console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))
+console.log(deleteNth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3))
 
 // Напишите функцию, которая принимает в качестве аргумента одну непустую строку, состоящую только из строчных и заглавных букв ASCII ( word), 
 // и возвращает упорядоченный список, содержащий индексы всех заглавных (верхних) букв в строке.
 
 const capitals = function (word) {
-	const res = []
-    for(let i = 0; i < word.length; i++){
-        if(word[i] === word[i].toUpperCase()){res.push(i)}
+    const res = []
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === word[i].toUpperCase()) { res.push(i) }
     }
     return res
 };
@@ -2202,14 +2202,60 @@ console.log(capitals(''))
 // Функция должна возвращать целое число — общее требуемое время.
 
 function queueTime(customers, n) {
-  if(customers.length === 0){return 0}
-  if(customers.length < n){return Math.max(...customers)}
-const tills = Array(n).fill(0)
-for(let i = 0; i < customers.length; i++){
-    let min = Math.min(...tills)
-    let nextTill = tills.indexOf(min)
-    tills[nextTill] += customers[i]
+    if (customers.length === 0) { return 0 }
+    if (customers.length < n) { return Math.max(...customers) }
+    const tills = Array(n).fill(0)
+    for (let i = 0; i < customers.length; i++) {
+        let min = Math.min(...tills)
+        let nextTill = tills.indexOf(min)
+        tills[nextTill] += customers[i]
+    }
+    return Math.max(...tills)
 }
-return Math.max(...tills)
+console.log(queueTime([2, 2, 3, 3, 4, 4], 2))
+
+// Ваша задача — написать функцию, которая может проверить корректность сообщения UVB-76. Функция должна возвращать значение, trueесли сообщение имеет правильный формат, и falseнаоборот.
+
+function validate(message) {
+    const test = message.split(' ')
+    for (let i = 0; i < test.length; i++) {
+        if (test[0] === 'MDZHB' && /^\d+$/.test(test[1]) && test[1].length === 2 && /^\d+$/.test(test[2]) && test[2].length === 3 && /^[A-Z]+$/.test(test[3]) && /^\d+$/.test(test[4]) && test[4].length === 2 && /^\d+$/.test(test[5]) && test[5].length === 2 && /^\d+$/.test(test[6]) && test[6].length === 2 && /^\d+$/.test(test[7]) && test[7].length === 2)
+            return true
+    }
+    return false;
 }
-console.log(queueTime([2,2,3,3,4,4], 2))
+console.log(validate("MDZHB 12 733 EDINENiE 67 79 66 32"))
+console.assert(validate("Is this a right message?") === false, 'Ошибка1')
+console.assert(validate("MDZHB 12 733 EDINENIE 67 79 66 32") === true, 'Ошибка2')
+console.assert(validate("MDZHB 12 733 INITIAL 67 79 66 32") === true, 'Ошибка3')
+console.assert(validate("MDZHB 60 130 KROLI5T 58 89 54 54") === false, 'Ошибка4')
+console.assert(validate("Is this a wrong message?") === false, 'Ошибка5')
+console.assert(validate("MDZHB 12 733 VOSKHOD 67 79 66 32") === true, 'Ошибка6')
+console.assert(validate("MD2HB 60 120 AKKRETSIA 58895454") === false, 'Ошибка7')
+console.assert(validate("MDZHB 102 733 BZHDM 67 79 66 32") === false, 'Ошибка8')
+console.assert(validate("MDZHB 12 733 VOSKHOD 67 79 66") === false, 'Ошибка9')
+
+// Напишите swapфункцию, которая меняет местами два целых числа.
+
+swap = ary => {
+    ary[0] = ary[0] + ary[1]
+    ary[1] = ary[0] - ary[1]
+    ary[0] = ary[0] - ary[1]
+    return ary
+}
+console.log(swap([100, 200]))
+
+// Рассмотрим последовательность целых чисел xs и целевое целое число n. Ваша задача — написать функцию, которая подсчитывает, сколько комбинаций индексов xsудовлетворяют двум правилам:
+
+// Размер комбинации должен быть на 1 меньше размера xs
+// Сумма элементов, соответствующих индексам, должна быть равна n
+
+function numCombo(arr, num){
+   let count = 0
+   for (let i = 0; i < arr.length; i++) {
+   const group = arr.slice(0, i).concat(arr.slice(i + 1));
+   if(group.reduce((acc, num) => acc + num) === num){count++}
+}
+return count;
+}
+console.log(numCombo([2, 0, 0, 0, 1], 2))
