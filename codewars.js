@@ -2259,3 +2259,110 @@ function numCombo(arr, num){
 return count;
 }
 console.log(numCombo([2, 0, 0, 0, 1], 2))
+
+
+// При наличии математического уравнения, имеющего *,+,-,/, преобразуйте его следующим образом:
+
+function solve(eq){
+    const exp = eq.match(/(\d+|[a-zA-Z]+|[+\-*/])/g)
+    return exp.reverse().join('')
+}
+console.log(solve("100*b/y"))
+
+// Даны два числа и арифметический оператор (его имя в виде строки), вернуть результат применения этого оператора к двум числам.
+
+// aи bоба будут положительными целыми числами и aвсегда будут первым числом в операции, и bвсегда вторым.
+
+// Четыре оператора: «сложение», «вычитание», «деление», «умножение».
+
+function arithmetic(a, b, operator){
+  const operation = {
+    "add": (a,b) => a + b,
+    "subtract": (a,b) => a - b,
+    'divide': (a,b) => a / b,
+    'multiply': (a,b) => a * b
+  }
+const func = operation[operator]
+return func(a,b)
+}
+console.log(arithmetic(1, 2, "divide"))
+
+// Учитывая список целочисленных значений, ваша задача — вернуть сумму значений. Однако если одно и то же целое значение встречается в списке несколько раз, вы можете учесть его в сумме только один раз.
+
+function uniqueSum(lst){
+    if(lst.length === 0){return null}
+  const set = new Set(lst)
+  const res = [...set].reduce((acc,num)=> acc + num)
+  return res
+}
+console.log(uniqueSum([]))
+console.assert(uniqueSum([1,3,8,1,8]) === 12, 'Ошибка1')
+console.assert(uniqueSum([1,2,3]) === 6, 'Ошибка2')
+console.assert(uniqueSum([-1,-1,5,2,-7]) === -1, 'Ошибка3')
+console.assert(uniqueSum([]) === null, 'Ошибка4')
+
+// Это простое упражнение для понимания функции языка JavaScript, называемой замыканием.
+
+// Функция buildFun возвращает массив функций. Единственный параметр, принимаемый buildFun, — это количество элементов N возвращаемого массива.
+
+// Желаемый результат заключается в том, что после выполнения всех функций в массиве должно быть возвращено число от 0 до N.
+
+function buildFun(n){
+
+	let res = []
+
+	function inner(){
+        for(let i = 0; i < n; i++){
+      res.push(i);
+    }
+    return res
+}
+return inner
+}
+const counter = buildFun(10)
+console.log(counter())
+
+// Генетический алгоритм основан на группах хромосом, называемых популяциями. Чтобы создать популяцию хромосом, нам нужно сгенерировать случайные двоичные строки заданной длины.
+
+// В этом ката вам необходимо реализовать функцию generate, которая получает a lengthи должна вернуть случайную двоичную строку с lengthсимволами.
+
+const generate = length => {
+    let res = ''
+for(let i = 0; i < length; i++){
+res += Math.random() < 0.5 ? '0' : '1'
+}
+return res
+};
+console.log(generate(10))
+
+
+// Декодирование — это тот же процесс, но в обратном порядке. Если мы декодируем csordaew, то получим codewars.
+
+function encode(s) {
+    const res = []
+    let start = 0
+    let end = s.length - 1
+    while(start <= end){
+        if(start === end){
+            res.push(s[start])
+        }
+        else{res.push(s[start], s[end])}
+        start++;
+end--
+    }
+return res.join('')
+}
+function decode(s) {
+    const res = []
+    let start = 0
+    let end = s.length - 1
+    for(let i = 0; i < s.length; i++){
+        if(i % 2 === 0){
+            res[start++] = s[i]
+        }
+        else{res[end--] = s[i]}
+    }
+return res.join('')
+}
+console.log(encode("codewars"))
+console.log(decode("csordaew"))
