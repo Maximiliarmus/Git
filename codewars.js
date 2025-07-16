@@ -2366,3 +2366,131 @@ return res.join('')
 }
 console.log(encode("codewars"))
 console.log(decode("csordaew"))
+
+// Напишите функцию, persistenceкоторая принимает положительный параметр numи возвращает его мультипликативную устойчивость, то есть количество раз, которое необходимо умножить цифры, numпока не получится однозначная цифра.
+
+function persistence(num) {
+   let count = 0
+   while(num >=10){
+    num = num.toString().split('').map(Number).reduce((a,b) => a * b)
+    count++
+   }
+   return count
+}
+console.log(persistence(999))
+console.assert(persistence(39) === 3, "Ошибка1")
+console.assert(persistence(4) === 0, "Ошибка2")
+console.assert(persistence(25) === 2, "Ошибка3")
+console.assert(persistence(999) === 4, "Ошибка4")
+
+// Вы только что обнаружили квадратное NxNполе ( ) и заметили предупреждающий знак. Знак гласит, что на двумерном сетчатом поле перед вами заложена бомба.
+
+// Напишите функцию, которая принимает двумерный массив и возвращает местоположение мины. Мина представлена целым числом 1в двумерном массиве. Области в двумерном массиве, не являющиеся миной, будут представлены как 0s.
+
+function mineLocation(field){
+    
+    for(let i = 0; i < field.length; i++){
+        for(let j = 0; j < field[i].length; j++){
+            if(field[i][j] === 1){
+                return [i,j]
+            }
+        }
+    }
+}
+console.log(mineLocation([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]))
+
+// Вы работаете специалистом по анализу данных в ИТ-компании, и ваш начальник внезапно попросил вас найти наиболее распространенные закономерности в играх «Крестики-нолики», представленных в опросе на веб-сайте вашей компании.
+
+// Однако некоторые из них не из реальных игр, т. е. позиция на такой игровой доске не может быть достигнута посредством обычной игры.
+
+// Вам придется найти способ отфильтровать такие «игры», оставив только правильные (достижимые).
+
+function isValid(board) {
+    // Функция для подсчета символов игрока на всем поле
+  const countMoves = (board, player) => board.reduce((count,row) => count + [...row].filter(c => c === player).length, 0)
+  const hasWon = (board, player) => {
+    const winLines = [
+        // Горизонтали
+        [board[0][0], board[0][1], board[0][2]],
+        [board[1][0], board[1][1], board[1][2]],
+        [board[2][0], board[2][1], board[2][2]],
+        // Вертикали
+        [board[0][0], board[1][0], board[2][0] ],
+        [board[0][1], board[1][1], board[2][1] ],
+        [board[0][2], board[1][2], board[2][2] ],
+        // Диагонали
+        [board[0][0], board[1][1], board[2][2] ],
+        [board[0][2], board[1][1], board[2][0] ]
+    ]
+    return winLines.some(line => line.every(cell => cell === player))
+  }
+//   количество ходов X
+  const xCount = countMoves(board, 'X')
+  //   количество ходов O
+  const oCount = countMoves(board, 'O')
+//   выиграли ли первый игрок
+const xWins = hasWon(board, 'X')
+//   выиграли ли второй игрок
+const oWins = hasWon(board, 'O')
+
+// Проверки валидности
+
+// Некорректное количество ходов
+if(oCount > xCount || xCount > oCount + 1){return false}
+// оба не могут выиграть одновременно
+if(xWins && oWins){return false}
+// если первый игрок победил, то у него должен быть лишний ход
+if(xWins && xCount !== oCount + 1){return false}
+   // если второй игрок победил, то должно быть одинаково ходов
+if(oWins && oCount !== xCount) {return false}
+return true
+}
+console.log(isValid(["XOX","XOX","OXO"]))
+
+// Создайте функцию с именем «rotate», которая принимает массив и возвращает новый массив с элементами внутри повернутых n пробелов.
+
+// Если n больше 0, массив сдвигается вправо. Если n меньше 0, массив сдвигается влево. Если n равно 0, массив возвращается без изменений.
+
+function rotate(array,n){
+    const res = [...array]
+    const len = res.length
+    n = n % len
+  if(n > 0){
+     for(let i = 0; i < n; i++){
+       res.unshift(res.pop())
+     }
+  }
+  if(n < 0){
+    for(let i = 0; i > n; i--){
+        res.push(res.shift())
+    }
+  }
+  return res
+}
+console.log(rotate([1, 2, 3, 4, 5], 11))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 1)) === JSON.stringify([5, 1, 2, 3, 4], 'ошибка1'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 2)) === JSON.stringify([4, 5, 1, 2, 3], 'ошибка2'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 3)) === JSON.stringify([3, 4, 5, 1, 2], 'ошибка3'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 4)) === JSON.stringify([2, 3, 4, 5, 1], 'ошибка4'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 5)) === JSON.stringify([1, 2, 3, 4, 5], 'ошибка5'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 0)) === JSON.stringify([1, 2, 3, 4, 5], 'ошибка6'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -1)) === JSON.stringify([2, 3, 4, 5, 1], 'ошибка7'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -2)) === JSON.stringify([3, 4, 5, 1, 2], 'ошибка8'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -3)) === JSON.stringify([4, 5, 1, 2, 3], 'ошибка9'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -4)) === JSON.stringify([5, 1, 2, 3, 4], 'ошибка10'))
+console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -5)) === JSON.stringify([1, 2, 3, 4, 5], 'ошибка11'))
+
+var clonewars = function(kataPerDay) {
+    let countClones = 1
+    let kataByClones = 0
+  
+  for(let i = 0; i < kataPerDay; i++){
+    
+      countClones = Math.pow(2, i)
+     kataByClones += countClones * (kataPerDay - i)
+     
+  }
+
+  return [countClones, kataByClones]
+}
+console.log(clonewars(0))
