@@ -2494,3 +2494,74 @@ var clonewars = function(kataPerDay) {
   return [countClones, kataByClones]
 }
 console.log(clonewars(0))
+
+// Реализуйте функцию, которая отфильтровывает значения массива, удовлетворяющие заданному предикату.
+
+function reject(array, predicate) {
+    const res = array.filter(el => !predicate(el))
+    
+    return res
+}
+console.log(reject([1, 2, 3, 4, 5, 6], (n) => n % 2 === 0))
+
+
+// Дан квадрат matrix. Ваша задача — поменять местами его самые длинные диагонали, поменяв местами их элементы в соответствующих позициях.
+
+function swapDiagonals(matrix) {
+  let n = matrix.length
+  for(let i = 0; i < n; i++){
+    let firstEl = matrix[i][i]
+    matrix[i][i] = matrix[i][n - 1 - i]
+    matrix[i][n - 1 - i] = firstEl
+    
+  }
+    return matrix;
+}
+console.log(swapDiagonals([[43, 455, 32, 103], [102, 988, 298, 981], [309, 21, 53, 64], [2, 22, 35, 291]]))
+
+// Напишите функцию, которая принимает строку (день недели) и целое число (число, которое нужно проверить), чтобы она сообщала врачу, боюсь я или нет. (возвращает логическое значение)
+
+const AmIAfraid = function(day, num){
+  if(day === "Monday" && num === 12){return true}
+  if(day === "Tuesday" && num > 95){return true}
+  if(day === "Wednesday" && num === 34){return true}
+  if(day === "Thursday" && num === 0){return true}
+  if(day === "Friday" && num % 2 === 0){return true}
+  if(day === "Sunday" && (num === 666 || num === -666)){return true}
+  if(day === "Saturday" && num === 56){return true}
+  return false
+  
+}
+console.log(AmIAfraid("Saturday", -666))
+console.assert(AmIAfraid("Monday", 13) === false, "Ошибка1")
+console.assert(AmIAfraid("Sunday", -666) === true, "Ошибка1")
+console.assert(AmIAfraid("Tuesday", 2) === false, "Ошибка1")
+console.assert(AmIAfraid("Tuesday", 965) === true, "Ошибка1")
+console.assert(AmIAfraid("Friday", 2) === true, "Ошибка1")
+
+// Вы — управляющий парка развлечений! Сегодня вы изучаете доход от продажи различных продуктов питания в вашем парке. 
+// Все продавцы, работающие на вас, могут сообщить процент посетителей, употребляющих именно эти продукты. 
+// На основе этих данных ваша текущая цель — разработать метод для определения минимального процента посетителей, которые должны были купить тот или иной продукт у всех продавцов в вашем парке.
+
+function minimumPercentage(foods) {
+    const sum = foods.reduce((acc, num) => acc + num, 0)
+    const maxPr = sum - (foods.length - 1) * 100
+    const res = [0, maxPr]
+return Math.max(...res)
+}
+console.log(minimumPercentage([50, 100]))
+
+// Реализуйте версию rangeи sum(которую вы затем сможете скопировать и использовать в своих будущих ката, чтобы сделать их меньше).
+
+Array.range = function(start, count) {
+  const res = new Array(count).fill(0).map((_, index) => start + index)
+  
+    return res;
+}
+console.log(Array.range(-3,5))
+
+Array.prototype.sum = function() {
+    if(this.length === 0){return 0}
+    return this[0] + this.slice(1).sum()
+}
+console.log([-3,-2,-1,0,1,2,3].sum())
