@@ -2250,20 +2250,20 @@ console.log(swap([100, 200]))
 // Размер комбинации должен быть на 1 меньше размера xs
 // Сумма элементов, соответствующих индексам, должна быть равна n
 
-function numCombo(arr, num){
-   let count = 0
-   for (let i = 0; i < arr.length; i++) {
-   const group = arr.slice(0, i).concat(arr.slice(i + 1));
-   if(group.reduce((acc, num) => acc + num) === num){count++}
-}
-return count;
+function numCombo(arr, num) {
+    let count = 0
+    for (let i = 0; i < arr.length; i++) {
+        const group = arr.slice(0, i).concat(arr.slice(i + 1));
+        if (group.reduce((acc, num) => acc + num) === num) { count++ }
+    }
+    return count;
 }
 console.log(numCombo([2, 0, 0, 0, 1], 2))
 
 
 // При наличии математического уравнения, имеющего *,+,-,/, преобразуйте его следующим образом:
 
-function solve(eq){
+function solve(eq) {
     const exp = eq.match(/(\d+|[a-zA-Z]+|[+\-*/])/g)
     return exp.reverse().join('')
 }
@@ -2275,30 +2275,30 @@ console.log(solve("100*b/y"))
 
 // Четыре оператора: «сложение», «вычитание», «деление», «умножение».
 
-function arithmetic(a, b, operator){
-  const operation = {
-    "add": (a,b) => a + b,
-    "subtract": (a,b) => a - b,
-    'divide': (a,b) => a / b,
-    'multiply': (a,b) => a * b
-  }
-const func = operation[operator]
-return func(a,b)
+function arithmetic(a, b, operator) {
+    const operation = {
+        "add": (a, b) => a + b,
+        "subtract": (a, b) => a - b,
+        'divide': (a, b) => a / b,
+        'multiply': (a, b) => a * b
+    }
+    const func = operation[operator]
+    return func(a, b)
 }
 console.log(arithmetic(1, 2, "divide"))
 
 // Учитывая список целочисленных значений, ваша задача — вернуть сумму значений. Однако если одно и то же целое значение встречается в списке несколько раз, вы можете учесть его в сумме только один раз.
 
-function uniqueSum(lst){
-    if(lst.length === 0){return null}
-  const set = new Set(lst)
-  const res = [...set].reduce((acc,num)=> acc + num)
-  return res
+function uniqueSum(lst) {
+    if (lst.length === 0) { return null }
+    const set = new Set(lst)
+    const res = [...set].reduce((acc, num) => acc + num)
+    return res
 }
 console.log(uniqueSum([]))
-console.assert(uniqueSum([1,3,8,1,8]) === 12, 'Ошибка1')
-console.assert(uniqueSum([1,2,3]) === 6, 'Ошибка2')
-console.assert(uniqueSum([-1,-1,5,2,-7]) === -1, 'Ошибка3')
+console.assert(uniqueSum([1, 3, 8, 1, 8]) === 12, 'Ошибка1')
+console.assert(uniqueSum([1, 2, 3]) === 6, 'Ошибка2')
+console.assert(uniqueSum([-1, -1, 5, 2, -7]) === -1, 'Ошибка3')
 console.assert(uniqueSum([]) === null, 'Ошибка4')
 
 // Это простое упражнение для понимания функции языка JavaScript, называемой замыканием.
@@ -2307,17 +2307,17 @@ console.assert(uniqueSum([]) === null, 'Ошибка4')
 
 // Желаемый результат заключается в том, что после выполнения всех функций в массиве должно быть возвращено число от 0 до N.
 
-function buildFun(n){
+function buildFun(n) {
 
-	let res = []
+    let res = []
 
-	function inner(){
-        for(let i = 0; i < n; i++){
-      res.push(i);
+    function inner() {
+        for (let i = 0; i < n; i++) {
+            res.push(i);
+        }
+        return res
     }
-    return res
-}
-return inner
+    return inner
 }
 const counter = buildFun(10)
 console.log(counter())
@@ -2328,10 +2328,10 @@ console.log(counter())
 
 const generate = length => {
     let res = ''
-for(let i = 0; i < length; i++){
-res += Math.random() < 0.5 ? '0' : '1'
-}
-return res
+    for (let i = 0; i < length; i++) {
+        res += Math.random() < 0.5 ? '0' : '1'
+    }
+    return res
 };
 console.log(generate(10))
 
@@ -2342,27 +2342,27 @@ function encode(s) {
     const res = []
     let start = 0
     let end = s.length - 1
-    while(start <= end){
-        if(start === end){
+    while (start <= end) {
+        if (start === end) {
             res.push(s[start])
         }
-        else{res.push(s[start], s[end])}
+        else { res.push(s[start], s[end]) }
         start++;
-end--
+        end--
     }
-return res.join('')
+    return res.join('')
 }
 function decode(s) {
     const res = []
     let start = 0
     let end = s.length - 1
-    for(let i = 0; i < s.length; i++){
-        if(i % 2 === 0){
+    for (let i = 0; i < s.length; i++) {
+        if (i % 2 === 0) {
             res[start++] = s[i]
         }
-        else{res[end--] = s[i]}
+        else { res[end--] = s[i] }
     }
-return res.join('')
+    return res.join('')
 }
 console.log(encode("codewars"))
 console.log(decode("csordaew"))
@@ -2370,12 +2370,12 @@ console.log(decode("csordaew"))
 // Напишите функцию, persistenceкоторая принимает положительный параметр numи возвращает его мультипликативную устойчивость, то есть количество раз, которое необходимо умножить цифры, numпока не получится однозначная цифра.
 
 function persistence(num) {
-   let count = 0
-   while(num >=10){
-    num = num.toString().split('').map(Number).reduce((a,b) => a * b)
-    count++
-   }
-   return count
+    let count = 0
+    while (num >= 10) {
+        num = num.toString().split('').map(Number).reduce((a, b) => a * b)
+        count++
+    }
+    return count
 }
 console.log(persistence(999))
 console.assert(persistence(39) === 3, "Ошибка1")
@@ -2387,12 +2387,12 @@ console.assert(persistence(999) === 4, "Ошибка4")
 
 // Напишите функцию, которая принимает двумерный массив и возвращает местоположение мины. Мина представлена целым числом 1в двумерном массиве. Области в двумерном массиве, не являющиеся миной, будут представлены как 0s.
 
-function mineLocation(field){
-    
-    for(let i = 0; i < field.length; i++){
-        for(let j = 0; j < field[i].length; j++){
-            if(field[i][j] === 1){
-                return [i,j]
+function mineLocation(field) {
+
+    for (let i = 0; i < field.length; i++) {
+        for (let j = 0; j < field[i].length; j++) {
+            if (field[i][j] === 1) {
+                return [i, j]
             }
         }
     }
@@ -2407,65 +2407,65 @@ console.log(mineLocation([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]
 
 function isValid(board) {
     // Функция для подсчета символов игрока на всем поле
-  const countMoves = (board, player) => board.reduce((count,row) => count + [...row].filter(c => c === player).length, 0)
-  const hasWon = (board, player) => {
-    const winLines = [
-        // Горизонтали
-        [board[0][0], board[0][1], board[0][2]],
-        [board[1][0], board[1][1], board[1][2]],
-        [board[2][0], board[2][1], board[2][2]],
-        // Вертикали
-        [board[0][0], board[1][0], board[2][0] ],
-        [board[0][1], board[1][1], board[2][1] ],
-        [board[0][2], board[1][2], board[2][2] ],
-        // Диагонали
-        [board[0][0], board[1][1], board[2][2] ],
-        [board[0][2], board[1][1], board[2][0] ]
-    ]
-    return winLines.some(line => line.every(cell => cell === player))
-  }
-//   количество ходов X
-  const xCount = countMoves(board, 'X')
-  //   количество ходов O
-  const oCount = countMoves(board, 'O')
-//   выиграли ли первый игрок
-const xWins = hasWon(board, 'X')
-//   выиграли ли второй игрок
-const oWins = hasWon(board, 'O')
+    const countMoves = (board, player) => board.reduce((count, row) => count + [...row].filter(c => c === player).length, 0)
+    const hasWon = (board, player) => {
+        const winLines = [
+            // Горизонтали
+            [board[0][0], board[0][1], board[0][2]],
+            [board[1][0], board[1][1], board[1][2]],
+            [board[2][0], board[2][1], board[2][2]],
+            // Вертикали
+            [board[0][0], board[1][0], board[2][0]],
+            [board[0][1], board[1][1], board[2][1]],
+            [board[0][2], board[1][2], board[2][2]],
+            // Диагонали
+            [board[0][0], board[1][1], board[2][2]],
+            [board[0][2], board[1][1], board[2][0]]
+        ]
+        return winLines.some(line => line.every(cell => cell === player))
+    }
+    //   количество ходов X
+    const xCount = countMoves(board, 'X')
+    //   количество ходов O
+    const oCount = countMoves(board, 'O')
+    //   выиграли ли первый игрок
+    const xWins = hasWon(board, 'X')
+    //   выиграли ли второй игрок
+    const oWins = hasWon(board, 'O')
 
-// Проверки валидности
+    // Проверки валидности
 
-// Некорректное количество ходов
-if(oCount > xCount || xCount > oCount + 1){return false}
-// оба не могут выиграть одновременно
-if(xWins && oWins){return false}
-// если первый игрок победил, то у него должен быть лишний ход
-if(xWins && xCount !== oCount + 1){return false}
-   // если второй игрок победил, то должно быть одинаково ходов
-if(oWins && oCount !== xCount) {return false}
-return true
+    // Некорректное количество ходов
+    if (oCount > xCount || xCount > oCount + 1) { return false }
+    // оба не могут выиграть одновременно
+    if (xWins && oWins) { return false }
+    // если первый игрок победил, то у него должен быть лишний ход
+    if (xWins && xCount !== oCount + 1) { return false }
+    // если второй игрок победил, то должно быть одинаково ходов
+    if (oWins && oCount !== xCount) { return false }
+    return true
 }
-console.log(isValid(["XOX","XOX","OXO"]))
+console.log(isValid(["XOX", "XOX", "OXO"]))
 
 // Создайте функцию с именем «rotate», которая принимает массив и возвращает новый массив с элементами внутри повернутых n пробелов.
 
 // Если n больше 0, массив сдвигается вправо. Если n меньше 0, массив сдвигается влево. Если n равно 0, массив возвращается без изменений.
 
-function rotate(array,n){
+function rotate(array, n) {
     const res = [...array]
     const len = res.length
     n = n % len
-  if(n > 0){
-     for(let i = 0; i < n; i++){
-       res.unshift(res.pop())
-     }
-  }
-  if(n < 0){
-    for(let i = 0; i > n; i--){
-        res.push(res.shift())
+    if (n > 0) {
+        for (let i = 0; i < n; i++) {
+            res.unshift(res.pop())
+        }
     }
-  }
-  return res
+    if (n < 0) {
+        for (let i = 0; i > n; i--) {
+            res.push(res.shift())
+        }
+    }
+    return res
 }
 console.log(rotate([1, 2, 3, 4, 5], 11))
 console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], 1)) === JSON.stringify([5, 1, 2, 3, 4], 'ошибка1'))
@@ -2480,18 +2480,18 @@ console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -3)) === JSON.stringify([4
 console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -4)) === JSON.stringify([5, 1, 2, 3, 4], 'ошибка10'))
 console.assert(JSON.stringify(rotate([1, 2, 3, 4, 5], -5)) === JSON.stringify([1, 2, 3, 4, 5], 'ошибка11'))
 
-var clonewars = function(kataPerDay) {
+var clonewars = function (kataPerDay) {
     let countClones = 1
     let kataByClones = 0
-  
-  for(let i = 0; i < kataPerDay; i++){
-    
-      countClones = Math.pow(2, i)
-     kataByClones += countClones * (kataPerDay - i)
-     
-  }
 
-  return [countClones, kataByClones]
+    for (let i = 0; i < kataPerDay; i++) {
+
+        countClones = Math.pow(2, i)
+        kataByClones += countClones * (kataPerDay - i)
+
+    }
+
+    return [countClones, kataByClones]
 }
 console.log(clonewars(0))
 
@@ -2499,7 +2499,7 @@ console.log(clonewars(0))
 
 function reject(array, predicate) {
     const res = array.filter(el => !predicate(el))
-    
+
     return res
 }
 console.log(reject([1, 2, 3, 4, 5, 6], (n) => n % 2 === 0))
@@ -2508,29 +2508,29 @@ console.log(reject([1, 2, 3, 4, 5, 6], (n) => n % 2 === 0))
 // Дан квадрат matrix. Ваша задача — поменять местами его самые длинные диагонали, поменяв местами их элементы в соответствующих позициях.
 
 function swapDiagonals(matrix) {
-  let n = matrix.length
-  for(let i = 0; i < n; i++){
-    let firstEl = matrix[i][i]
-    matrix[i][i] = matrix[i][n - 1 - i]
-    matrix[i][n - 1 - i] = firstEl
-    
-  }
+    let n = matrix.length
+    for (let i = 0; i < n; i++) {
+        let firstEl = matrix[i][i]
+        matrix[i][i] = matrix[i][n - 1 - i]
+        matrix[i][n - 1 - i] = firstEl
+
+    }
     return matrix;
 }
 console.log(swapDiagonals([[43, 455, 32, 103], [102, 988, 298, 981], [309, 21, 53, 64], [2, 22, 35, 291]]))
 
 // Напишите функцию, которая принимает строку (день недели) и целое число (число, которое нужно проверить), чтобы она сообщала врачу, боюсь я или нет. (возвращает логическое значение)
 
-const AmIAfraid = function(day, num){
-  if(day === "Monday" && num === 12){return true}
-  if(day === "Tuesday" && num > 95){return true}
-  if(day === "Wednesday" && num === 34){return true}
-  if(day === "Thursday" && num === 0){return true}
-  if(day === "Friday" && num % 2 === 0){return true}
-  if(day === "Sunday" && (num === 666 || num === -666)){return true}
-  if(day === "Saturday" && num === 56){return true}
-  return false
-  
+const AmIAfraid = function (day, num) {
+    if (day === "Monday" && num === 12) { return true }
+    if (day === "Tuesday" && num > 95) { return true }
+    if (day === "Wednesday" && num === 34) { return true }
+    if (day === "Thursday" && num === 0) { return true }
+    if (day === "Friday" && num % 2 === 0) { return true }
+    if (day === "Sunday" && (num === 666 || num === -666)) { return true }
+    if (day === "Saturday" && num === 56) { return true }
+    return false
+
 }
 console.log(AmIAfraid("Saturday", -666))
 console.assert(AmIAfraid("Monday", 13) === false, "Ошибка1")
@@ -2547,21 +2547,96 @@ function minimumPercentage(foods) {
     const sum = foods.reduce((acc, num) => acc + num, 0)
     const maxPr = sum - (foods.length - 1) * 100
     const res = [0, maxPr]
-return Math.max(...res)
+    return Math.max(...res)
 }
 console.log(minimumPercentage([50, 100]))
 
 // Реализуйте версию rangeи sum(которую вы затем сможете скопировать и использовать в своих будущих ката, чтобы сделать их меньше).
 
-Array.range = function(start, count) {
-  const res = new Array(count).fill(0).map((_, index) => start + index)
-  
+Array.range = function (start, count) {
+    const res = new Array(count).fill(0).map((_, index) => start + index)
+
     return res;
 }
-console.log(Array.range(-3,5))
+console.log(Array.range(-3, 5))
 
-Array.prototype.sum = function() {
-    if(this.length === 0){return 0}
+Array.prototype.sum = function () {
+    if (this.length === 0) { return 0 }
     return this[0] + this.slice(1).sum()
 }
-console.log([-3,-2,-1,0,1,2,3].sum())
+console.log([-3, -2, -1, 0, 1, 2, 3].sum())
+
+// Вес каждого восклицательного знака равен 2; вес каждого вопросительного знака равен 3. Положим две струны leftна rightвесы — уравновешены ли они?
+
+// Если левая сторона тяжелее, возвращаемся "Left"; если правая сторона тяжелее, возвращаемся "Right"; если они сбалансированы, возвращаемся "Balance".
+
+function balance(left, right) {
+    let vLeft = 0
+    let qLeft = 0
+    let vRight = 0
+    let qRight = 0
+    for (let i = 0; i < left.length; i++) {
+        if (left[i] === '!') { vLeft += 2 }
+        if (left[i] === '?') { qLeft += 3 }
+    }
+    for (let i = 0; i < right.length; i++) {
+        if (right[i] === '!') { vRight += 2 }
+        if (right[i] === '?') { qRight += 3 }
+    }
+    let sumLeft = vLeft + qLeft
+    let sumRight = vRight + qRight
+    if (sumLeft > sumRight) { return 'Left' }
+    if (sumLeft < sumRight) { return 'Right' }
+    return 'Balance';
+}
+console.log(balance("!!???!????", "??!!?!!!!!!?"))
+
+// Создайте функцию, которая принимает римское число в качестве аргумента и возвращает его значение в виде целого десятичного числа. Вам не нужно проверять форму римского числа.
+
+function solution(roman) {
+    const obj = {
+        'I': 1,
+        'V': 5,
+        'X':  10,
+        'L':  50,
+        'C':  100,
+        'D':  500,
+        'M' : 1000
+  }
+  let total = 0
+for(let i = 0; i < roman.length; i++){
+    const curValue = obj[roman[i]]
+    const nextValue = obj[roman[i + 1]]
+    if(nextValue && curValue < nextValue){
+    total -= curValue
+}
+else{total += curValue}
+}
+
+    return total;
+}
+console.log(solution('MMVIII'))
+
+
+// Ваша задача — реализовать функцию, которая принимает список целых чисел и сортирует его в волновом порядке на месте; ваша функция не должна ничего возвращать.
+
+function waveSort(arr) {
+for(let i = 0; i < arr.length - 1; i++){
+    if(i % 2 === 0){
+        if(arr[i] < arr[i + 1]){
+            let temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+    }
+    else{
+        if(arr[i] > arr[i + 1]){
+           let temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp; 
+        }
+    }
+}
+return arr
+}
+console.log(waveSort([1, 2]))
