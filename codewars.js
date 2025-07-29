@@ -2597,21 +2597,21 @@ function solution(roman) {
     const obj = {
         'I': 1,
         'V': 5,
-        'X':  10,
-        'L':  50,
-        'C':  100,
-        'D':  500,
-        'M' : 1000
-  }
-  let total = 0
-for(let i = 0; i < roman.length; i++){
-    const curValue = obj[roman[i]]
-    const nextValue = obj[roman[i + 1]]
-    if(nextValue && curValue < nextValue){
-    total -= curValue
-}
-else{total += curValue}
-}
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+    let total = 0
+    for (let i = 0; i < roman.length; i++) {
+        const curValue = obj[roman[i]]
+        const nextValue = obj[roman[i + 1]]
+        if (nextValue && curValue < nextValue) {
+            total -= curValue
+        }
+        else { total += curValue }
+    }
 
     return total;
 }
@@ -2621,22 +2621,160 @@ console.log(solution('MMVIII'))
 // Ваша задача — реализовать функцию, которая принимает список целых чисел и сортирует его в волновом порядке на месте; ваша функция не должна ничего возвращать.
 
 function waveSort(arr) {
-for(let i = 0; i < arr.length - 1; i++){
-    if(i % 2 === 0){
-        if(arr[i] < arr[i + 1]){
-            let temp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = temp;
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (i % 2 === 0) {
+            if (arr[i] < arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+        }
+        else {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
         }
     }
-    else{
-        if(arr[i] > arr[i + 1]){
-           let temp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = temp; 
-        }
-    }
-}
-return arr
+    return arr
 }
 console.log(waveSort([1, 2]))
+
+// Имея строку, содержащую цифры (обозначающие силу пламени свечей), вычислите количество ударов, необходимое для того, чтобы потушить все свечи.
+
+// Начиная с начала ряда, каждый удар может коснуться только трёх свечей, уменьшая их силу на одну. Вы сможете коснуться следующих свечей только после того, как погаснут свечи, стоящие прямо перед вами.
+
+function blowCandles(str) {
+    let count = 0
+    const strNum = str.split('').map(Number)
+    while (strNum.some(num => num > 0)) {
+        count++
+
+        let startIndex = strNum.findIndex(num => num > 0)
+        for (let i = 0; i < 3; i++) {
+            const curIndex = startIndex + i
+            if (curIndex < strNum.length && strNum[curIndex] > 0) {
+                strNum[curIndex]--;
+            }
+        }
+    }
+    return count
+}
+console.log(blowCandles("0323456"))
+
+// Дано число n, такое что n > 1, найти, являются ли его корень 2- й степени , корень 4 -й степени и корень 8- й степени целыми числами (дробная часть равна 0), вернуть, trueесли оно существует, falseесли нет.
+
+function perfectRoots(n) {
+    let double = Math.pow(n, 1 / 2)
+    let fourth = Math.pow(n, 1 / 4)
+    let eights = Math.pow(n, 1 / 8)
+    return double % 1 === 0 && fourth % 1 === 0 && eights % 1 === 0;
+}
+console.log(perfectRoots(6561))
+
+// Завершите функцию, которая принимает 3 числа x, y and k(где x ≤ y) и возвращает количество целых чисел в диапазоне [x..y](включая оба конца), которые делятся на k.
+
+function divisibleCount(x, y, k) {
+    const diffOne = Math.floor(y / k)
+    const diffTwo = Math.floor((x - 1) / k)
+    return diffOne - diffTwo
+}
+console.log(divisibleCount(6, 11, 2))
+
+// В этой задаче вам будет дан массив целых чисел, и ваша задача — вернуть сумму элементов, занимающих индексы, являющиеся простыми числами.
+
+// Первый элемент массива находится по индексу 0.
+function isPrime(num) {
+
+    if (num <= 1) { return false }
+    if (num <= 3) { return true }
+    if (num % 2 === 0 || num % 3 === 0) { return false }
+    for (let j = 5; j * j <= num; j += 6) {
+        if (num % j === 0 || num % (j + 2) === 0) { return false }
+    }
+    return true
+}
+
+function total(arr) {
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (isPrime(i)) { sum += arr[i] }
+    }
+    return sum
+
+};
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]))
+
+// Если дано строго положительное целое число n, цель этого ката — найти все возможные пары целых чисел, (a, b)произведение квадратов которых равно n:
+
+// Верните двумерный массив этих пар.
+
+function squareProduct(n) {
+    const res = []
+    const sqrtTwo = Math.sqrt(n)
+    if(sqrtTwo % 1 !== 0){return res}
+    for(let i = 1; i * i <= sqrtTwo; i++){
+        if(sqrtTwo % i === 0){
+            const j = sqrtTwo / i;
+
+            res.push([i,j])
+            
+        }
+    }
+    
+    return res;
+}
+console.log(squareProduct(256))
+
+// При наличии строки s и символа cвернуть массив целых чисел, представляющих кратчайшее расстояние от текущего символа s до c.
+
+function shortesttoChar(s, c) {
+    const res = []
+    let prev = -Infinity
+  if(s === "" || c === ""){return res}
+  if(!s.includes(c)){return res}
+  for(let i = 0; i < s.length; i++){
+    if(s[i] === c){prev = i}
+    res[i] = i - prev
+  }
+  prev = Infinity
+  for(let i = s.length - 1; i >= 0; i--){
+    if(s[i] === c){prev = i}
+    res[i] = Math.min(res[i], prev - i)
+  }
+  return res
+}
+console.log(shortesttoChar("aaaaaa", "b"))
+
+// Расстояние Хэмминга — это мера сходства двух строк одинаковой длины. Дополните функцию так, чтобы она возвращала количество позиций, в которых входные строки не совпадают.
+
+function hamming(a, b) {
+	const arr1 = a.split('')
+    const arr2 = b.split('')
+    let count = 0
+    for(let i = 0; i < arr1.length; i++){
+if(arr1[i] !== arr2[i]){count++}
+    }
+    return count;
+}
+console.log(hamming("old father, old artificer","of my soul the uncreated "))
+
+// Разница hamming distanceмежду парой чисел — это количество двоичных битов, которые различаются в своей двоичной записи.
+
+function hammingDistance (a, b) {
+    let num1 = a.toString(2)
+    let num2 = b.toString(2)
+    let count = 0
+    const maxLength = Math.max(num1.length, num2.length)
+    num1 = num1.padStart(maxLength, 0)
+    num2 = num2.padStart(maxLength, 0)
+    for(let i = 0; i < num1.length; i++){
+        if(num1[i] !== num2[i]){count++} 
+    }
+  return count;  
+}
+console.log(hammingDistance(34013, 702))
+
+
+
